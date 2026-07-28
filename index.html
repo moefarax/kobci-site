@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kobci — dhawaan / coming soon</title>
 <meta name="description" content="Kobci — nidaam maamul ganacsi oo af Soomaali ah. Dhawaan. / Business management software built in Somali. Coming soon.">
+<link rel="icon" href="/brand/mark.svg" type="image/svg+xml">
 <style>
   :root{
     --bg:#ffffff; --fg:#12211f; --muted:#5b6b68; --line:#e3e9e7; --accent:#0d7a6b;
@@ -23,8 +24,10 @@
        -webkit-text-size-adjust:100%}
   main{max-width:520px;width:100%;text-align:center}
 
-  .logo{font-size:38px;font-weight:700;letter-spacing:-.03em;margin-bottom:6px}
+  .logo{font-size:38px;font-weight:700;letter-spacing:-.03em;margin-bottom:6px;
+        display:flex;align-items:center;justify-content:center;gap:12px}
   .logo span{color:var(--accent)}
+  .logo .mark{width:36px;height:36px;color:var(--accent);flex:none}
   .badge{display:inline-block;font-size:13px;font-weight:600;color:var(--accent);
          border:1px solid var(--accent);border-radius:999px;padding:3px 14px;margin-bottom:28px}
 
@@ -43,7 +46,14 @@
 </head>
 <body>
 <main>
-  <div class="logo">Kob<span>ci</span></div>
+  <div class="logo">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+      <rect x="3" y="19" width="7" height="9" rx="2.5" fill="currentColor" opacity=".4"/>
+      <rect x="12.5" y="13" width="7" height="15" rx="2.5" fill="currentColor" opacity=".7"/>
+      <rect x="22" y="4" width="7" height="24" rx="2.5" fill="currentColor"/>
+    </svg>
+    <span style="color:inherit">Kob<span>ci</span></span>
+  </div>
   <div class="badge">Dhawaan · Coming soon</div>
 
   <p class="so">Nidaam maamul ganacsi oo af Soomaali ah.</p>
