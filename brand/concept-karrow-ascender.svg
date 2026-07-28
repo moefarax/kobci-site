@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-labelledby="title">
+  <title id="title">Kobci K-arrow Ascender concept</title>
+  <g fill="currentColor">
+    <path d="M4 5.5h6V29H4z"/>
+    <path d="m8.6 15 4.2-1.1L29 29h-8.3L9 18.8z"/>
+    <path d="M8.3 14.7 20.7 5.8 18 3.5 29.5 1l-1.7 11.5-3.1-2.7-13.5 9.8z"/>
+  </g>
+</svg>

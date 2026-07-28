@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-labelledby="title" fill="none">
+  <title id="title">Kobci K-arrow Chevron concept</title>
+  <g stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M6.5 5v23M8.5 17 28 3M8.5 17 24 28"/>
+    <path d="M20 3h8v8"/>
+  </g>
+</svg>

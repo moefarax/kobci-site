@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-labelledby="title">
+  <title id="title">Kobci K-arrow Crosscut concept</title>
+  <g fill="currentColor">
+    <path d="M5 4h6v24H5z"/>
+    <path d="m9 15 4-1.2L29 28h-8.2L9.4 18.5z"/>
+    <path d="M2.5 20.8 22.7 7.2l-2.2-3L29 3l-1.4 8.5-2.4-3.1L4.8 22.2z"/>
+  </g>
+</svg>

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kobci logo concept comparison</title>
+<style>
+  :root {
+    color-scheme: light;
+    --light: #ffffff;
+    --light-ink: #0d7a6b;
+    --dark: #0e1614;
+    --dark-ink: #3ec9b0;
+    --page: #f3f6f5;
+    --text: #12211f;
+    --muted: #5b6b68;
+    --line: #dce5e2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--text);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { width: min(1180px, 100%); margin: 0 auto; padding: 48px 20px 72px; }
+  h1 { margin: 0; font-size: clamp(30px, 5vw, 48px); letter-spacing: -.035em; line-height: 1.05; }
+  .intro { max-width: 70ch; margin: 12px 0 32px; color: var(--muted); }
+  .study-heading { margin: 44px 0 8px; font-size: clamp(24px, 3vw, 32px); letter-spacing: -.025em; line-height: 1.15; }
+  .study-heading:first-of-type { margin-top: 0; }
+  .study-intro { max-width: 72ch; margin: 0 0 22px; color: var(--muted); }
+  .concepts { display: grid; gap: 24px; }
+  article { overflow: hidden; background: var(--light); border: 1px solid var(--line); border-radius: 16px; }
+  .heading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding: 20px 22px; border-bottom: 1px solid var(--line); }
+  h2 { margin: 0; font-size: 22px; letter-spacing: -.02em; }
+  .verdict { color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  .surfaces { display: grid; grid-template-columns: 1fr 1fr; }
+  .surface { min-width: 0; padding: 22px; }
+  .surface.light { background: var(--light); color: var(--light-ink); }
+  .surface.dark { background: var(--dark); color: var(--dark-ink); }
+  .surface-label { margin-bottom: 18px; color: currentColor; font-size: 12px; font-weight: 700; letter-spacing: .08em; opacity: .72; text-transform: uppercase; }
+  .size-grid { display: grid; gap: 16px; }
+  .sample { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: center; gap: 12px; min-height: 64px; }
+  .size { font-size: 11px; font-variant-numeric: tabular-nums; opacity: .7; }
+  .lockup { display: inline-flex; align-items: center; gap: max(6px, .28em); min-width: 0; }
+  .mark { display: block; flex: none; width: var(--s); height: var(--s); color: currentColor; }
+  .wordmark { font-size: max(13px, calc(var(--s) * .72)); font-weight: 700; letter-spacing: -.035em; line-height: 1; white-space: nowrap; }
+  .favicon { display: flex; align-items: flex-end; gap: 14px; margin-top: 22px; padding-top: 18px; border-top: 1px solid currentColor; border-color: color-mix(in srgb, currentColor 20%, transparent); }
+  .favicon-item { display: grid; justify-items: center; gap: 6px; }
+  .favicon-item small { font-size: 10px; opacity: .7; }
+  .lockup-demo { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 20px 22px 24px; border-top: 1px solid var(--line); color: var(--light-ink); }
+  .demo { min-height: 104px; display: grid; place-items: center; border: 1px dashed var(--line); border-radius: 12px; padding: 16px; }
+  .horizontal { display: inline-flex; align-items: center; gap: 9px; }
+  .horizontal .mark { --s: 32px; }
+  .horizontal .wordmark { font-size: 25px; }
+  .stacked { display: inline-flex; flex-direction: column; align-items: center; gap: 8px; }
+  .stacked .mark { --s: 40px; }
+  .stacked .wordmark { font-size: 24px; }
+  .demo-label { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; text-align: center; }
+  .note { margin: 28px 0 0; color: var(--muted); font-size: 13px; }
+  @media (max-width: 720px) {
+    main { padding: 28px 12px 48px; }
+    .surfaces, .lockup-demo { grid-template-columns: 1fr; }
+    .dark { border-top: 1px solid #22322f; }
+    .heading { align-items: flex-start; flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <symbol id="keystone" viewBox="0 0 32 32">
+      <path fill="currentColor" d="M5 3h6v10.3L21 3h7.6L17 14.7 29 29h-7.8L11 17.2V29H5z"/>
+    </symbol>
+    <symbol id="ledger" viewBox="0 0 32 32">
+      <path fill="currentColor" d="M3 6.2C7.1 5.3 11.1 6 14.2 8.4V27C11 25 7.2 24.4 3 25.4z"/>
+      <path fill="currentColor" d="M29 6.2c-4.1-.9-8.1-.2-11.2 2.2V27c3.2-2 7-2.6 11.2-1.6z"/>
+    </symbol>
+    <symbol id="trade-link" viewBox="0 0 32 32">
+      <g fill="none" stroke="currentColor" stroke-width="4">
+        <rect x="3.5" y="6.5" width="17" height="11" rx="5.5"/>
+        <rect x="11.5" y="14.5" width="17" height="11" rx="5.5"/>
+      </g>
+    </symbol>
+    <symbol id="inventory-k" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <rect x="3" y="3" width="8" height="8" rx="1.4"/>
+        <rect x="3" y="12" width="8" height="8" rx="1.4"/>
+        <rect x="3" y="21" width="8" height="8" rx="1.4"/>
+        <rect x="21" y="3" width="8" height="8" rx="1.4"/>
+        <rect x="12" y="12" width="8" height="8" rx="1.4"/>
+        <rect x="21" y="21" width="8" height="8" rx="1.4"/>
+      </g>
+    </symbol>
+    <symbol id="account-seal" viewBox="0 0 32 32">
+      <path fill="currentColor" fill-rule="evenodd" d="M8 3h16a5 5 0 0 1 5 5v16a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Zm2 5v16h4.5v-6.8l5.8 6.8H26l-7.8-8.8L25.5 8H20l-5.5 5.5V8z"/>
+    </symbol>
+    <symbol id="karrow-capline" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <path d="M4 4h6v24H4z"/>
+        <path d="m8.5 14.5 4.3-1L29 28h-8.2L9 18.3z"/>
+        <path d="M8.3 14.2 20.6 5.8 18.4 4H29l-2.8 10.2-2.4-3.6-12.6 8.7z"/>
+      </g>
+    </symbol>
+    <symbol id="karrow-ascender" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <path d="M4 5.5h6V29H4z"/>
+        <path d="m8.6 15 4.2-1.1L29 29h-8.3L9 18.8z"/>
+        <path d="M8.3 14.7 20.7 5.8 18 3.5 29.5 1l-1.7 11.5-3.1-2.7-13.5 9.8z"/>
+      </g>
+    </symbol>
+    <symbol id="karrow-crosscut" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <path d="M5 4h6v24H5z"/>
+        <path d="m9 15 4-1.2L29 28h-8.2L9.4 18.5z"/>
+        <path d="M2.5 20.8 22.7 7.2l-2.2-3L29 3l-1.4 8.5-2.4-3.1L4.8 22.2z"/>
+      </g>
+    </symbol>
+    <symbol id="karrow-chevron" viewBox="0 0 32 32">
+      <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter">
+        <path d="M6.5 5v23M8.5 17 28 3M8.5 17 24 28"/>
+        <path d="M20 3h8v8"/>
+      </g>
+    </symbol>
+    <symbol id="ksweep-tight" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <path d="M4 3.5h7v25H4z"/>
+        <path d="m8.8 16.4 3.4-.5L29 28.5h-8.7L9 19.2z"/>
+        <path d="M8.5 15.8C13 12.8 13.8 6.2 20.8 4.2 24 3.3 26.5 2.8 29.3 2.2 28.2 6.3 27.5 9.5 25.7 12.3 25.1 10.4 24.1 9.2 22.2 9.1 17.2 9.2 16.9 13.8 12.5 15.8z"/>
+      </g>
+    </symbol>
+    <symbol id="ksweep-medium" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <path d="M4 3.5h7v25H4z"/>
+        <path d="m8.8 16.4 3.4-.5L29 28.5h-8.7L9 19.2z"/>
+        <path d="M8.5 15.8C13 12.8 13.8 6.2 20.8 4.2 24 3.3 26.5 2.8 29.3 2.2 28.3 5.9 27.6 8.8 26.2 11.3 25.3 9.8 24.2 8.9 22.4 8.8 18 9 17.2 13.2 14 15.8z"/>
+      </g>
+    </symbol>
+    <symbol id="ksweep-open" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <path d="M4 3.5h7v25H4z"/>
+        <path d="m8.8 16.4 3.4-.5L29 28.5h-8.7L9 19.2z"/>
+        <path d="M8.5 15.8C13 12.8 13.8 6.2 20.8 4.2 24 3.3 26.5 2.8 29.3 2.2 28.4 5.5 27.8 8.1 26.6 10.5 25.6 9.3 24.4 8.6 22.8 8.6 18.8 8.8 17.8 12.8 15.5 15.8z"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<main>
+  <h1>Kobci logo directions</h1>
+  <p class="intro">The original five directions, the four-execution K-arrow study, and a three-tuning fluid K-sweep study, all shown as live one-colour vectors at 16, 24, 32, and 64px. Every sample inherits colour; the light and dark panels use the site's existing teal values. Wordmarks use only the required system font stack.</p>
+
+  <h2 class="study-heading">Original directions</h2>
+  <div class="concepts" id="concepts"></div>
+  <h2 class="study-heading">K-arrow focused study</h2>
+  <p class="study-intro">One idea, executed across four variables: integrated versus crossing arrow, contained versus above-cap arrowhead, solid versus stroked K, and filled triangle versus two-stroke chevron.</p>
+  <div class="concepts" id="karrows"></div>
+  <h2 class="study-heading">Fluid K-sweep throat study</h2>
+  <p class="study-intro">One heavy K and one curved rising sweep, tuned only by the narrowest open throat and the corresponding thickening toward the arrowhead.</p>
+  <div class="concepts" id="ksweeps"></div>
+  <p class="note">The comparison page is self-contained: all display geometry and CSS are inline, with no font, image, script library, or network dependency. The individual production-ready SVG files sit beside this page.</p>
+</main>
+
+<script>
+  const concepts = [
+    { id: "keystone", name: "Keystone", verdict: "16px: pass" },
+    { id: "ledger", name: "Ledger", verdict: "16px: pass" },
+    { id: "trade-link", name: "Trade Link", verdict: "16px: conditional pass" },
+    { id: "inventory-k", name: "Inventory K", verdict: "16px: discard" },
+    { id: "account-seal", name: "Account Seal", verdict: "16px: pass" }
+  ];
+  const karrows = [
+    { id: "karrow-capline", name: "K-arrow Capline", verdict: "16px: pass ? K-first" },
+    { id: "karrow-ascender", name: "K-arrow Ascender", verdict: "16px: pass ? K-first" },
+    { id: "karrow-crosscut", name: "K-arrow Crosscut", verdict: "16px: conditional ? K-first" },
+    { id: "karrow-chevron", name: "K-arrow Chevron", verdict: "16px: pass ? K-first" }
+  ];
+  const ksweeps = [
+    { id: "ksweep-tight", name: "K-sweep Tight", verdict: "16px: fail | throat 0.75px | K-first" },
+    { id: "ksweep-medium", name: "K-sweep Medium", verdict: "16px: conditional | throat 1.5px | K-first" },
+    { id: "ksweep-open", name: "K-sweep Open", verdict: "16px: pass | throat 2.25px | K-first" }
+  ];
+  const sizes = [16, 24, 32, 64];
+
+  function icon(id, size) {
+    return `<svg class="mark" style="--s:${size}px" viewBox="0 0 32 32" aria-hidden="true"><use href="#${id}"></use></svg>`;
+  }
+
+  function surface(concept, theme) {
+    const rows = sizes.map(size => `
+      <div class="sample">
+        <span class="size">${size}px</span>
+        <span class="lockup">${icon(concept.id, size)}<span class="wordmark">Kobci</span></span>
+      </div>`).join("");
+    const favicons = [16, 24, 32, 64].map(size => `
+      <span class="favicon-item">${icon(concept.id, size)}<small>${size}</small></span>`).join("");
+    return `
+      <section class="surface ${theme}">
+        <div class="surface-label">${theme} surface</div>
+        <div class="size-grid">${rows}</div>
+        <div class="favicon" aria-label="Favicon size row">${favicons}</div>
+      </section>`;
+  }
+
+  function demo(concept, type) {
+    return `
+      <div>
+        <div class="demo">
+          <span class="${type}">
+            ${icon(concept.id, type === "horizontal" ? 32 : 40)}
+            <span class="wordmark">Kobci</span>
+          </span>
+        </div>
+        <span class="demo-label">${type} lockup</span>
+      </div>`;
+  }
+
+  function cards(items) {
+    return items.map(concept => `
+      <article>
+        <div class="heading"><h2>${concept.name}</h2><span class="verdict">${concept.verdict}</span></div>
+        <div class="surfaces">${surface(concept, "light")}${surface(concept, "dark")}</div>
+        <div class="lockup-demo">${demo(concept, "horizontal")}${demo(concept, "stacked")}</div>
+      </article>`).join("");
+  }
+
+  document.getElementById("concepts").innerHTML = cards(concepts);
+  document.getElementById("karrows").innerHTML = cards(karrows);
+  document.getElementById("ksweeps").innerHTML = cards(ksweeps);
+</script>
+</body>
+</html>

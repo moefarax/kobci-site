@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-labelledby="title">
+  <title id="title">Kobci K-arrow Capline concept</title>
+  <g fill="currentColor">
+    <path d="M4 4h6v24H4z"/>
+    <path d="m8.5 14.5 4.3-1L29 28h-8.2L9 18.3z"/>
+    <path d="M8.3 14.2 20.6 5.8 18.4 4H29l-2.8 10.2-2.4-3.6-12.6 8.7z"/>
+  </g>
+</svg>
