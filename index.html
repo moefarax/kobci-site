@@ -3,71 +3,355 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kobci — dhawaan / coming soon</title>
-<meta name="description" content="Kobci — nidaam maamul ganacsi oo af Soomaali ah. Dhawaan. / Business management software built in Somali. Coming soon.">
+<title>Kobci — Nidaamka maamulka ganacsiga</title>
+<meta name="description" content="Kobci — nidaam maamul ganacsi oo af Soomaali ah: iibka, bakhaarka, deynta macaamiisha iyo xisaabta maalinlaha ah. Tijaabo 30 maalmood ah oo bilaash.">
 <link rel="icon" href="/brand/mark.svg" type="image/svg+xml">
+<meta property="og:title" content="Kobci — Nidaamka maamulka ganacsiga">
+<meta property="og:description" content="Iibka, bakhaarka, deynta macaamiisha iyo xisaabta maalinlaha — hal meel, af Soomaali. Tijaabo 30 maalmood ah oo bilaash.">
 <style>
   :root{
-    --bg:#ffffff; --fg:#12211f; --muted:#5b6b68; --line:#e3e9e7; --accent:#0d7a6b;
+    --bg:#ffffff; --fg:#12211f; --muted:#5b6b68; --line:#e3e9e7;
+    --accent:#0d7a6b; --accent-fg:#ffffff; --card:#f7faf9;
   }
   @media (prefers-color-scheme: dark){
-    :root{ --bg:#0e1614; --fg:#e9f1ef; --muted:#9db0ac; --line:#22322f; --accent:#3ec9b0; }
+    :root{ --bg:#0e1614; --fg:#e9f1ef; --muted:#9db0ac; --line:#22322f;
+           --accent:#3ec9b0; --accent-fg:#06201c; --card:#131f1d; }
   }
-  :root[data-theme="dark"]{ --bg:#0e1614; --fg:#e9f1ef; --muted:#9db0ac; --line:#22322f; --accent:#3ec9b0; }
-  :root[data-theme="light"]{ --bg:#ffffff; --fg:#12211f; --muted:#5b6b68; --line:#e3e9e7; --accent:#0d7a6b; }
+  :root[data-theme="dark"]{ --bg:#0e1614; --fg:#e9f1ef; --muted:#9db0ac; --line:#22322f;
+           --accent:#3ec9b0; --accent-fg:#06201c; --card:#131f1d; }
+  :root[data-theme="light"]{ --bg:#ffffff; --fg:#12211f; --muted:#5b6b68; --line:#e3e9e7;
+           --accent:#0d7a6b; --accent-fg:#ffffff; --card:#f7faf9; }
 
   *{box-sizing:border-box}
-  html,body{height:100%}
   body{margin:0;background:var(--bg);color:var(--fg);
-       font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-       display:flex;align-items:center;justify-content:center;padding:32px 20px;
+       font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
        -webkit-text-size-adjust:100%}
-  main{max-width:520px;width:100%;text-align:center}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  a{color:var(--accent)}
 
-  .logo{font-size:38px;font-weight:700;letter-spacing:-.03em;margin-bottom:6px;
-        display:flex;align-items:center;justify-content:center;gap:12px}
+  header{border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
+  .logo{font-size:22px;font-weight:700;letter-spacing:-.02em}
   .logo span{color:var(--accent)}
-  .logo .mark{width:36px;height:36px;color:var(--accent);flex:none}
-  .badge{display:inline-block;font-size:13px;font-weight:600;color:var(--accent);
-         border:1px solid var(--accent);border-radius:999px;padding:3px 14px;margin-bottom:28px}
+  .langs{display:flex;gap:4px;border:1px solid var(--line);border-radius:999px;padding:3px}
+  .langs button{border:0;background:none;color:var(--muted);font:inherit;font-size:14px;
+                padding:5px 12px;border-radius:999px;cursor:pointer}
+  .langs button[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg);font-weight:600}
 
-  .so{font-size:19px;margin:0 0 6px}
-  .en{font-size:17px;color:var(--muted);margin:0 0 32px}
+  .hero{padding:64px 0 48px}
+  h1{font-size:clamp(30px,5.5vw,46px);line-height:1.15;margin:0 0 16px;letter-spacing:-.02em}
+  .lede{font-size:clamp(17px,2.4vw,20px);color:var(--muted);margin:0 0 28px;max-width:38em}
+  .cta{display:inline-block;background:var(--accent);color:var(--accent-fg);text-decoration:none;
+       font-weight:600;padding:14px 26px;border-radius:10px}
+  .cta.alt{background:none;color:var(--fg);border:1px solid var(--line);margin-inline-start:8px}
+  .note{font-size:14px;color:var(--muted);margin-top:14px}
 
-  .rule{height:1px;background:var(--line);margin:0 auto 28px;max-width:180px}
+  section{padding:48px 0;border-top:1px solid var(--line)}
+  h2{font-size:clamp(22px,3.4vw,28px);margin:0 0 8px;letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:0 0 28px;max-width:40em}
 
-  .contact p{margin:0 0 6px}
-  .contact a{color:var(--accent);text-decoration:none;font-weight:600;font-size:18px}
-  .contact a:hover{text-decoration:underline}
-  .hours{font-size:14px;color:var(--muted);margin-top:18px}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card h3{margin:0 0 8px;font-size:17px}
+  .card p{margin:0;color:var(--muted);font-size:15px}
 
-  footer{margin-top:36px;font-size:13px;color:var(--muted)}
+  .price{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center}
+  .tier.best{border-color:var(--accent);border-width:2px}
+  .tier .name{font-weight:600;margin-bottom:6px}
+  .tier .amt{font-size:30px;font-weight:700;letter-spacing:-.02em}
+  .tier .per{color:var(--muted);font-size:14px;margin-bottom:12px}
+  .tier ul{list-style:none;margin:0;padding:0;color:var(--muted);font-size:15px}
+  .tier li{padding:4px 0}
+  .tag{display:inline-block;font-size:12px;font-weight:600;color:var(--accent);
+       border:1px solid var(--accent);border-radius:999px;padding:2px 10px;margin-bottom:10px}
+
+  ul.plain{margin:0;padding-inline-start:20px;color:var(--muted)}
+  ul.plain li{padding:3px 0}
+
+  .contact{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .contact .card p{color:var(--fg)}
+  .big{font-size:19px;font-weight:600}
+
+  footer{border-top:1px solid var(--line);padding:28px 0 44px;color:var(--muted);font-size:14px}
 </style>
 </head>
 <body>
-<main>
-  <div class="logo">
-    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
-      <g fill="currentColor">
-        <path d="M5 3.5 H10.5 V9.7 C8.4 11.8 6.4 14.2 5 16.6 Z"/>
-        <path d="M6 28.5 L6 21.2 C6 17.6 8.2 14.7 11.2 12.4 C13.7 10.1 16.2 7.6 18.6 5.2 C18 4.1 17.3 3.3 16.2 2.8 C19.4 2.1 22.6 1.5 25.8 1 L26.4 1.6 C26.1 4.8 25.7 8 25.2 11.2 C24.3 10 23.4 9.5 22.6 9.5 C20 11.5 17.3 13.6 14.7 15.6 L26.2 28.5 H20.4 L11.5 18.2 C11 21.5 10.7 24.9 10.7 28.5 Z"/>
-      </g>
-    </svg>
-    <span style="color:inherit">Kob<span>ci</span></span>
+
+<header>
+  <div class="wrap bar">
+    <div class="logo">Kob<span>ci</span></div>
+    <div class="langs" role="group" aria-label="Language">
+      <button type="button" data-lang="so" aria-pressed="true">Soomaali</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
   </div>
-  <div class="badge">Dhawaan · Coming soon</div>
+</header>
 
-  <p class="so">Nidaam maamul ganacsi oo af Soomaali ah.</p>
-  <p class="en">Business management software, built in Somali.</p>
+<main class="wrap">
 
-  <div class="rule"></div>
-
-  <div class="contact">
-    <p><a href="mailto:info@kobci.so">info@kobci.so</a></p>
-    <p class="hours">Sabti – Khamiis, 8:00 – 18:00 (EAT)<br>Saturday – Thursday</p>
+  <div class="hero">
+    <h1 class="t"
+        data-so="Ganacsigaaga oo dhan — hal meel, af Soomaali."
+        data-en="Your whole business — one place, in Somali."></h1>
+    <p class="lede t"
+       data-so="Kobci wuxuu kuu hayaa iibka, bakhaarka, deynta macaamiisha iyo lacagta maalinlaha ah. Wuxuu ku shaqeeyaa internet gaabis ah, wuuna kuu xafidayaa xogtaada marka korontadu go'do."
+       data-en="Kobci keeps your sales, stock, customer credit and daily cash in one system. It works on a slow connection and protects your records when the power cuts."></p>
+    <a class="cta t" id="cta-top" href="mailto:info@kobci.so?subject=Kobci%20trial"
+       data-so="Bilow tijaabada 30-ka maalmood ee bilaashka ah" data-en="Start your free 30-day trial"></a>
+    <a class="cta alt t" href="#qiimaha"
+       data-so="Eeg qiimaha" data-en="See pricing"></a>
+    <p class="note t"
+       data-so="Waxaan hadda la shaqeynaynaa ganacsiyada ugu horreeya. Taageero af Soomaali ah."
+       data-en="We are onboarding our first businesses now. Support in Somali."></p>
   </div>
 
-  <footer>© 2026 Kobci</footer>
+  <section>
+    <h2 class="t" data-so="Waxa uu kuu qabanayo" data-en="What it does for you"></h2>
+    <p class="sub t"
+       data-so="Afar shay oo maalin kasta muhiim kuu ah."
+       data-en="The four things that matter every day."></p>
+    <div class="grid">
+      <div class="card">
+        <h3 class="t" data-so="Iibka degdegga ah" data-en="Fast selling"></h3>
+        <p class="t"
+           data-so="Iib ku samee daqiiqado. Lacag caddaan ah, EVC Plus, eDahab ama deyn — mid kasta waa la diiwaangelinayaa."
+           data-en="Ring up a sale in seconds — cash, EVC Plus, eDahab or credit. Every one is recorded."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="Bakhaarka iyo taariikhda dhicitaanka" data-en="Stock and expiry"></h3>
+        <p class="t"
+           data-so="Ogow waxa kuu haray, waxa dhammaaday, iyo waxa taariikhdiisu soo dhow tahay — sidaas ayaad khasaaraha uga hortagaysaa."
+           data-en="Know what is left, what ran out, and what is close to expiry — so you stop losing stock."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="Deynta macaamiisha" data-en="Customer credit (deyn)"></h3>
+        <p class="t"
+           data-so="Macmiil kasta iyo intii uu kugu leeyahay — hal shaashad. Bixin kasta si sahlan ayaa loo diiwaangelinayaa."
+           data-en="Every customer and exactly what they owe you — one screen. Settlements recorded in a tap."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="Xisaabta maalinlaha ah" data-en="Daily close"></h3>
+        <p class="t"
+           data-so="Maalin kasta dhamaadkeeda: maxaa soo galay (caddaan iyo wallet), maxaa baxay, maxaase maqan."
+           data-en="At the end of each day: what came in (cash and wallet), what went out, and what is missing."></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="t" data-so="Yaa loogu talagalay" data-en="Who it is for"></h2>
+    <div class="grid">
+      <div class="card">
+        <h3 class="t" data-so="Dukaamada iyo tafaariiqda" data-en="Shops and retailers"></h3>
+        <p class="t"
+           data-so="Ganacsiyada laga bilaabo qof keliya ilaa sagaal shaqaale."
+           data-en="Businesses from one person up to nine staff."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="Jumladlayaasha iyo qeybiyeyaasha" data-en="Wholesalers and distributors"></h3>
+        <p class="t"
+           data-so="Macaamiil deyn ku qaata, qiimo kala duwan, iyo alaab maalin kasta baxaysa."
+           data-en="Customers who buy on credit, tiered prices, and stock moving every day."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="Warshadaha yaryar" data-en="Small producers"></h3>
+        <p class="t"
+           data-so="Sida warshadaha biyaha: wax soo saarka, batchka, iyo gaadiidka qeybinta."
+           data-en="Such as water bottling: production, batch records, and delivery routes."></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="t" data-so="Sida loo bilaabo" data-en="How it works"></h2>
+    <div class="grid">
+      <div class="card">
+        <h3 class="t" data-so="1. Email noo soo dir" data-en="1. Email us"></h3>
+        <p class="t"
+           data-so="Noo soo qor magaca ganacsigaaga iyo inta goobood ee aad leedahay: info@kobci.so."
+           data-en="Write to info@kobci.so with your business name and how many locations you have."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="2. Waan kuu diyaarinaynaa" data-en="2. We set you up"></h3>
+        <p class="t"
+           data-so="Maalin shaqo gudaheed ayaan kuugu jawaabaynaa, waxaanan kuu samaynaynaa nidaamkaaga oo diyaar ah."
+           data-en="We reply within one business day and hand you a ready system."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="3. 30 maalmood bilaash ku isticmaal" data-en="3. Use it free for 30 days"></h3>
+        <p class="t"
+           data-so="Ganacsigaaga ku maamul bil dhan. Haddii uu ku anfaco, markaas ayaad bixinaysaa."
+           data-en="Run your business on it for a full month. Pay only if it works for you."></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="qiimaha">
+    <h2 class="t" data-so="Qiimaha" data-en="Pricing"></h2>
+    <p class="sub t"
+       data-so="Qiimaha waa ganacsiga oo dhan — ma aha shaqaale kasta. Bixinta sannadlaha ah waa ka jaban."
+       data-en="Priced per business, not per user. Annual payment costs less."></p>
+    <div class="price">
+      <div class="tier">
+        <div class="name t" data-so="Bilow" data-en="Starter"></div>
+        <div class="amt">$9.99</div>
+        <div class="per t" data-so="bishii — ama $99 sannadkii" data-en="per month — or $99 per year"></div>
+        <ul>
+          <li class="t" data-so="Iibka iyo bakhaarka" data-en="Sales and stock"></li>
+          <li class="t" data-so="Deynta macaamiisha" data-en="Customer credit (deyn)"></li>
+          <li class="t" data-so="Faturooyinka iyo kharashaadka" data-en="Invoices and expenses"></li>
+          <li class="t" data-so="Taariikhda dhicitaanka" data-en="Expiry and batch tracking"></li>
+          <li class="t" data-so="1 goob" data-en="1 location"></li>
+        </ul>
+      </div>
+      <div class="tier best">
+        <span class="tag t" data-so="Ugu caansan" data-en="Most popular"></span>
+        <div class="name t" data-so="Dhexe" data-en="Business"></div>
+        <div class="amt">$14.99</div>
+        <div class="per t" data-so="bishii — ama $149 sannadkii" data-en="per month — or $149 per year"></div>
+        <ul>
+          <li class="t" data-so="Waxa Bilow leeyahay oo dhan" data-en="Everything in Starter"></li>
+          <li class="t" data-so="Macaamiisha iyo raadraaca iibka" data-en="Customer follow-up (CRM)"></li>
+          <li class="t" data-so="Warbixinno iyo shaashado falanqayn" data-en="Reports and dashboards"></li>
+          <li class="t" data-so="Ilaa 3 goobood" data-en="Up to 3 locations"></li>
+        </ul>
+      </div>
+      <div class="tier">
+        <div class="name t" data-so="Maamul" data-en="Company"></div>
+        <div class="amt">$24.99</div>
+        <div class="per t" data-so="bishii — ama $249 sannadkii" data-en="per month — or $249 per year"></div>
+        <ul>
+          <li class="t" data-so="Waxa Dhexe leeyahay oo dhan" data-en="Everything in Business"></li>
+          <li class="t" data-so="Shaqaalaha: xaadiris iyo fasax" data-en="Staff attendance and leave"></li>
+          <li class="t" data-so="Mushaharka shaqaalaha" data-en="Payroll"></li>
+          <li class="t" data-so="Ilaa 10 goobood, taageero degdeg ah" data-en="Up to 10 locations, priority support"></li>
+        </ul>
+      </div>
+    </div>
+    <p class="note t"
+       data-so="Sannadkii hal mar haddaad bixiso, laba bilood ayaa bilaash kuu ah. Lacagta waxaad ku bixin kartaa EVC Plus, eDahab, Zaad ama bangi. Dulsaar (ribo) ma jiro — waligeed."
+       data-en="Pay yearly and two months are free. Pay by EVC Plus, eDahab, Zaad or bank transfer. No interest, ever."></p>
+    <p class="note t"
+       data-so="Tijaabo 30 maalmood ah oo bilaash — lacag-bixin looma baahna. Goor kasta waad joojin kartaa, xogtaadana waad la bixi kartaa."
+       data-en="Free 30-day trial — no payment details needed. Cancel anytime, and take your data with you."></p>
+  </section>
+
+  <section>
+    <h2 class="t" data-so="Xogtaadu waa taada" data-en="Your data is yours"></h2>
+    <p class="sub t"
+       data-so="Ganacsigaagu wuxuu ku kalsoonaan karaa nidaamka oo keliya haddii uu ogyahay meesha xogtiisu taallo."
+       data-en="You can only trust a system if you know where your records live."></p>
+    <ul class="plain">
+      <li class="t"
+          data-so="Waqti kasta waad soo dejisan kartaa xogtaada oo dhan (Excel/CSV)."
+          data-en="You can export all of your data at any time (Excel/CSV)."></li>
+      <li class="t"
+          data-so="Xogta waa la kaydiyaa maalin kasta, waxaana laga soo celin karaa."
+          data-en="Data is backed up daily and can be restored."></li>
+      <li class="t"
+          data-so="Ma aha nidaam canshuur — waa nidaam aad ganacsigaaga ku maamusho."
+          data-en="This is not a tax system — it is a system for running your own business."></li>
+      <li class="t"
+          data-so="Haddaad naga tagto, xogtaada waad qaadan kartaa."
+          data-en="If you leave us, you take your data with you."></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="t" data-so="Su'aalaha badanaa la weydiiyo" data-en="Common questions"></h2>
+    <div class="grid">
+      <div class="card">
+        <h3 class="t" data-so="Xogtayda yaa arki kara?" data-en="Who can see my records?"></h3>
+        <p class="t"
+           data-so="Adiga iyo dadka aad u ogolaato oo keliya. Xogtaadu waa taada — waqti kasta waad soo dejisan kartaa (Excel/CSV)."
+           data-en="Only you and the people you allow. Your data is yours — you can export all of it at any time (Excel/CSV)."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="Maxaa dhacaya haddaan bixin joojiyo?" data-en="What happens if I stop paying?"></h3>
+        <p class="t"
+           data-so="Nidaamku wuxuu noqonayaa mid akhris keliya ah — xogtaadu ma lumayso, waadna soo dejisan kartaa. Marka aad bixiso ayuu si buuxda kuugu soo laabanayaa."
+           data-en="Your account becomes read-only — nothing is deleted and you can still export. Full access returns when you pay again."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="Dulsaar (ribo) ma jiraa?" data-en="Is there any interest?"></h3>
+        <p class="t"
+           data-so="Ma jiro — waligeed. Bixin dib u dhacday dulsaar ma leh, deynta macaamiishaaduna dulsaar ma leh."
+           data-en="No — ever. There is no interest on late payments, and the deyn ledger never calculates interest."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="Sideen u bixiyaa?" data-en="How do I pay?"></h3>
+        <p class="t"
+           data-so="EVC Plus, eDahab, Zaad ama bangi. Kaadh lama rabo."
+           data-en="EVC Plus, eDahab, Zaad or bank transfer. No card needed."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="Telefoonkayga ma ku shaqeeyaa?" data-en="Does it work on my phone?"></h3>
+        <p class="t"
+           data-so="Haa — wuxuu ku shaqeeyaa telefoon kasta oo casri ah iyo kombiyuutar, xitaa internet gaabis ah."
+           data-en="Yes — any modern phone or computer, even on a slow connection."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="Ma nidaam canshuur baa?" data-en="Is this a tax system?"></h3>
+        <p class="t"
+           data-so="Maya. Kobci waa nidaam aad ganacsigaaga ku maamusho — ma aha nidaam canshuur."
+           data-en="No. Kobci is a system for running your own business — it is not a tax system."></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="xiriir">
+    <h2 class="t" data-so="Nala soo xiriir" data-en="Contact us"></h2>
+    <p class="sub t"
+       data-so="Waxaan kuu sameyn karnaa bandhig ganacsigaaga ku habboon."
+       data-en="We can walk you through a demo built around your business."></p>
+    <div class="contact">
+      <!-- Phone/WhatsApp card returns here when the number is ready (owner ruling 2026-08-26: email-only until then) -->
+      <div class="card">
+        <h3 class="t" data-so="Email" data-en="Email"></h3>
+        <p class="big"><a href="mailto:info@kobci.so">info@kobci.so</a></p>
+        <p class="t" data-so="Maalin shaqo gudaheed ayaan kuugu jawaabaynaa."
+                     data-en="We reply within one business day."></p>
+      </div>
+      <div class="card">
+        <h3 class="t" data-so="Saacadaha taageerada" data-en="Support hours"></h3>
+        <p class="big t" data-so="Sabti – Khamiis" data-en="Saturday – Thursday"></p>
+        <p class="t" data-so="8:00 – 18:00 (EAT). Jimcaha waa fasax."
+                     data-en="8:00 – 18:00 (EAT). Friday is our day off."></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hero">
+    <h2 class="t" data-so="Diyaar ma u tahay inaad bilowdo?" data-en="Ready to start?"></h2>
+    <a class="cta t" href="mailto:info@kobci.so?subject=Kobci%20trial"
+       data-so="Bilow tijaabada 30-ka maalmood ee bilaashka ah" data-en="Start your free 30-day trial"></a>
+  </div>
+
 </main>
+
+<footer class="wrap">
+  <p>© 2026 Kobci · <a href="mailto:info@kobci.so">info@kobci.so</a></p>
+</footer>
+
+<script>
+(function(){
+  var nodes = document.querySelectorAll('.t');
+  var buttons = document.querySelectorAll('.langs button');
+  function apply(lang){
+    document.documentElement.lang = lang;
+    nodes.forEach(function(el){ el.textContent = el.dataset[lang]; });
+    buttons.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
+    try { localStorage.setItem('kobci-lang', lang); } catch(e){}
+  }
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ apply(b.dataset.lang); });
+  });
+  var saved;
+  try { saved = localStorage.getItem('kobci-lang'); } catch(e){}
+  apply(saved === 'en' ? 'en' : 'so');
+})();
+</script>
+
 </body>
 </html>
