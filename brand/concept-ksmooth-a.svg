@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Kobci">
+  <g fill="currentColor">
+    <rect x="18" y="10" width="16" height="80"/>
+    <polygon points="26,46 38,58 78,90 56,90"/>
+  </g>
+  <path d="M28 56 C 42 50, 56 42, 72 28" fill="none" stroke="currentColor" stroke-width="17" stroke-linecap="butt"/>
+  <polygon points="86.3,13.7 79.2,39.2 60.8,20.8" fill="currentColor"/>
+</svg>

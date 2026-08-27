@@ -75,15 +75,24 @@
   .hero h1{font-size:clamp(34px,5.6vw,62px);line-height:1.06;letter-spacing:-.025em;font-weight:800;margin:0 0 20px}
   .hero h1 em{font-style:normal;color:var(--amber)}
   .lede{font-size:clamp(17px,2.2vw,20px);line-height:1.6;color:var(--on-teal-soft);margin:0 0 30px;max-width:34em}
-  .cta{display:inline-block;background:var(--amber);color:#2b1a02;text-decoration:none;
-       font-weight:700;font-size:17px;padding:15px 26px;border-radius:12px;min-height:44px;
+  .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px}
+  .cta{display:inline-flex;align-items:center;justify-content:center;text-align:center;
+       background:var(--amber);color:#2b1a02;text-decoration:none;border:2px solid transparent;
+       font-weight:700;font-size:17px;padding:13px 24px;border-radius:12px;min-height:44px;
        box-shadow:0 3px 0 rgba(0,0,0,.25)}
   .cta:hover{transform:translateY(-1px);box-shadow:0 4px 0 rgba(0,0,0,.25)}
   .cta:active{transform:translateY(1px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
   .cta,.cta:hover,.cta:active{transition:transform .15s cubic-bezier(.22,1,.36,1),box-shadow .15s cubic-bezier(.22,1,.36,1)}
-  .cta.ghost{background:transparent;color:var(--on-teal);border:2px solid var(--teal-edge);box-shadow:none;margin-inline-start:10px}
+  .cta.ghost{background:transparent;color:var(--on-teal);border-color:var(--teal-edge);box-shadow:none}
   .cta.ghost:hover{border-color:var(--on-teal-soft)}
-  .hero .note{font-size:14px;color:var(--on-teal-soft);margin-top:16px}
+  .hero .note{font-size:14px;color:var(--on-teal-soft);margin-top:18px;max-width:34em}
+  /* copy-email: shown only when JS + clipboard are live (mailto needs a configured mail app;
+     many phone-first users have none — the address must be graspable without one) */
+  .copybtn{display:none;vertical-align:middle;background:none;font:inherit;font-size:13.5px;font-weight:700;
+           color:inherit;border:1.5px solid currentColor;border-color:color-mix(in oklab,currentColor 45%,transparent);
+           border-radius:999px;min-height:44px;padding:8px 14px;margin-inline-start:8px;cursor:pointer}
+  .copybtn:hover{border-color:currentColor}
+  .js-copy .copybtn{display:inline-flex;align-items:center}
 
   /* receipt collage */
   .artifacts{position:relative;min-height:500px;filter:drop-shadow(0 18px 28px rgba(0,0,0,.35))}
@@ -215,9 +224,11 @@
       <p class="lede t"
          data-so="Kobci wuxuu kuu hayaa iibka, bakhaarka, deynta macaamiisha iyo xisaabta maalinlaha ah. Wuxuu ku shaqeeyaa telefoonkaaga iyo internet gaabis ah."
          data-en="Kobci keeps your sales, stock, customer deyn and daily cash in one place. It works on your phone, even on a slow connection.">Kobci wuxuu kuu hayaa iibka, bakhaarka, deynta macaamiisha iyo xisaabta maalinlaha ah. Wuxuu ku shaqeeyaa telefoonkaaga iyo internet gaabis ah.</p>
-      <a class="cta t" id="cta-top" href="mailto:info@kobci.so?subject=Kobci%20trial"
-         data-so="Bilow tijaabada 30-ka maalmood ee bilaashka ah" data-en="Start your free 30-day trial">Bilow tijaabada 30-ka maalmood ee bilaashka ah</a>
-      <a class="cta ghost t" href="#qiimaha" data-so="Eeg qiimaha" data-en="See pricing">Eeg qiimaha</a>
+      <div class="cta-row">
+        <a class="cta t" id="cta-top" href="mailto:info@kobci.so?subject=Kobci%20trial"
+           data-so="Bilow tijaabada 30-ka maalmood ee bilaashka ah" data-en="Start your free 30-day trial">Bilow tijaabada 30-ka maalmood ee bilaashka ah</a>
+        <a class="cta ghost t" href="#qiimaha" data-so="Eeg qiimaha" data-en="See pricing">Eeg qiimaha</a>
+      </div>
       <p class="note t"
          data-so="Email noo soo dir — maalin shaqo gudaheed ayaan kuu diyaarinaynaa. Kaadh lama rabo."
          data-en="Send us one email — we set you up within a business day. No card needed.">Email noo soo dir — maalin shaqo gudaheed ayaan kuu diyaarinaynaa. Kaadh lama rabo.</p>
@@ -396,7 +407,9 @@
         <p class="t"
            data-so="Noo soo qor magaca ganacsigaaga iyo inta goobood ee aad leedahay."
            data-en="Write to us with your business name and how many locations you have.">Noo soo qor magaca ganacsigaaga iyo inta goobood ee aad leedahay.</p>
-        <a class="mail" href="mailto:info@kobci.so?subject=Kobci%20trial">info@kobci.so</a>
+        <a class="mail" href="mailto:info@kobci.so?subject=Kobci%20trial">info@kobci.so</a><button
+          type="button" class="copybtn t" data-copy="info@kobci.so" aria-live="polite"
+          data-so="Koobi" data-en="Copy">Koobi</button>
       </div>
       <div class="step">
         <span class="stepno" aria-hidden="true">2</span>
@@ -552,7 +565,9 @@
        data-en="One email — we reply within a business day.">Hal email — maalin shaqo gudaheed ayaan kuugu jawaabaynaa.</p>
     <a class="cta t" href="mailto:info@kobci.so?subject=Kobci%20trial"
        data-so="Bilow tijaabada 30-ka maalmood ee bilaashka ah" data-en="Start your free 30-day trial">Bilow tijaabada 30-ka maalmood ee bilaashka ah</a>
-    <p class="note" style="margin-top:16px"><a href="mailto:info@kobci.so" style="color:var(--on-teal-soft)">info@kobci.so</a></p>
+    <p class="note" style="margin-top:16px;color:var(--on-teal-soft)"><a href="mailto:info@kobci.so" style="color:inherit">info@kobci.so</a><button
+      type="button" class="copybtn t" data-copy="info@kobci.so" aria-live="polite"
+      data-so="Koobi" data-en="Copy">Koobi</button></p>
     <!-- Phone/WhatsApp contact returns here when the number is ready (owner ruling 2026-08-26: email-only until then) -->
   </div>
 </div>
@@ -584,6 +599,26 @@
   var saved;
   try { saved = localStorage.getItem('kobci-lang'); } catch(e){}
   apply(saved === 'en' ? 'en' : 'so');
+
+  // Copy-email: revealed only when the Clipboard API is real (no dead buttons on
+  // old WebViews; without JS the plain mailto text stands alone).
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    document.documentElement.classList.add('js-copy');
+    document.querySelectorAll('.copybtn').forEach(function(btn){
+      var so = btn.dataset.so, en = btn.dataset.en, t;
+      btn.addEventListener('click', function(){
+        navigator.clipboard.writeText(btn.dataset.copy).then(function(){
+          btn.dataset.so = 'La koobiyay ✓'; btn.dataset.en = 'Copied ✓';
+          btn.textContent = btn.dataset[document.documentElement.lang] || btn.dataset.so;
+          clearTimeout(t);
+          t = setTimeout(function(){
+            btn.dataset.so = so; btn.dataset.en = en;
+            btn.textContent = btn.dataset[document.documentElement.lang] || so;
+          }, 2000);
+        }).catch(function(){});
+      });
+    });
+  }
 
   // Scroll reveal: opt-in via .js-reveal so content is fully visible without JS,
   // and skipped entirely under reduced motion.
