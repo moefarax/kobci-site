@@ -8,6 +8,22 @@
 <link rel="icon" href="/brand/mark.svg" type="image/svg+xml">
 <meta property="og:title" content="Kobci — Nidaamka maamulka ganacsiga">
 <meta property="og:description" content="Iibka, bakhaarka, deynta macaamiisha iyo xisaabta maalinlaha — hal meel, af Soomaali. Tijaabo 30 maalmood ah oo bilaash.">
+<meta property="og:image" content="https://kobci.so/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://kobci.so/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Xogtayda yaa arki kara?","acceptedAnswer":{"@type":"Answer","text":"Adiga iyo dadka aad u ogolaato oo keliya. Xogtaadu waa taada — waqti kasta waad soo dejisan kartaa."}},
+{"@type":"Question","name":"Maxaa dhacaya haddaan bixin joojiyo?","acceptedAnswer":{"@type":"Answer","text":"Nidaamku wuxuu noqonayaa mid akhris keliya ah — xogtaadu ma lumayso, waadna soo dejisan kartaa. Marka aad bixiso ayuu si buuxda kuugu soo laabanayaa."}},
+{"@type":"Question","name":"Dulsaar (ribo) ma jiraa?","acceptedAnswer":{"@type":"Answer","text":"Ma jiro — waligeed. Bixin dib u dhacday dulsaar ma leh, deynta macaamiishaaduna dulsaar ma leh."}},
+{"@type":"Question","name":"Sideen u bixiyaa?","acceptedAnswer":{"@type":"Answer","text":"EVC Plus, eDahab, Zaad ama bangi. Kaadh lama rabo."}},
+{"@type":"Question","name":"Telefoonkayga ma ku shaqeeyaa?","acceptedAnswer":{"@type":"Answer","text":"Haa — wuxuu ku shaqeeyaa telefoon kasta oo casri ah iyo kombiyuutar, xitaa internet gaabis ah."}},
+{"@type":"Question","name":"Ma nidaam canshuur baa?","acceptedAnswer":{"@type":"Answer","text":"Maya. Kobci waa nidaam aad ganacsigaaga ku maamusho — ma aha nidaam canshuur."}}
+]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&display=swap">
@@ -20,6 +36,7 @@
     --amber:#e8a13d; --amber-ink:#7a4b06;
     --paperline:#e7ecea;
     --focus:#0d7a6b;
+    --yr:#0a4f45;
   }
   :root[data-theme="dark"], :root.dark{ --forced:1 }
   @media (prefers-color-scheme: dark){
@@ -31,6 +48,7 @@
       --paperline:#1b332d;
       --amber-ink:#f2b263;
       --focus:#3ec9b0;
+      --yr:#3ec9b0;
     }
   }
   :root[data-theme="dark"]{
@@ -41,6 +59,7 @@
       --paperline:#1b332d;
       --amber-ink:#f2b263;
       --focus:#3ec9b0;
+      --yr:#3ec9b0;
   }
 
   *{box-sizing:border-box}
@@ -50,8 +69,11 @@
        font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
        -webkit-text-size-adjust:100%}
   .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
-  a{color:var(--teal)}
+  a{color:var(--teal);text-underline-offset:3px}
+  ::selection{background:var(--amber);color:#2b1a02}
   :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+  /* dark teal bands: the teal focus token vanishes against them — amber carries focus there */
+  header :focus-visible,.hero :focus-visible,.close-band :focus-visible{outline-color:var(--amber)}
   h1,h2,h3,.amt,.stepno{font-family:"Bricolage Grotesque",system-ui,Arial,sans-serif}
   h1,h2,h3{text-wrap:balance}
   .skip{position:absolute;left:-999px;top:0;background:var(--teal);color:var(--on-teal);padding:10px 16px;z-index:60}
@@ -130,7 +152,7 @@
           background:var(--teal);color:var(--on-teal);font-weight:800;font-size:19px;margin-bottom:14px}
   .step h3{font-size:19px;margin:0 0 8px}
   .step p{margin:0;color:var(--ink-soft);font-size:15.5px}
-  .step .mail{display:inline-block;margin-top:10px;font-weight:700}
+  .step .mail{display:inline-flex;align-items:center;min-height:44px;margin-top:2px;font-weight:700}
 
   /* pricing — shop price tags */
   .price{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(14px,2.5vw,22px);align-items:stretch}
@@ -140,12 +162,16 @@
   .amt{font-size:clamp(34px,4vw,42px);font-weight:800;letter-spacing:-.02em;line-height:1}
   .amt sup{font-size:.45em;font-weight:700;vertical-align:super}
   .per{color:var(--ink-soft);font-size:14px;margin:6px 0 4px}
-  .yr{font-size:14px;font-weight:700;color:var(--teal);margin-bottom:16px}
+  .yr{font-size:14px;font-weight:700;color:var(--yr);margin-bottom:16px}
   .tag-tier ul{list-style:none;margin:0;padding:14px 0 0;border-top:1px dashed var(--line);font-size:15px}
   .tag-tier li{padding:5px 0 5px 26px;position:relative;color:var(--ink-soft)}
   .tag-tier li::before{content:"";position:absolute;left:0;top:9px;width:14px;height:14px;border-radius:4px;
        background:var(--teal);clip-path:polygon(14% 44%,0 60%,40% 100%,100% 16%,84% 2%,40% 70%)}
   .tag-tier.best{background:var(--teal-night);border-color:var(--teal-night);color:var(--on-teal)}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .tag-tier.best{border-color:var(--teal-edge)}
+  }
+  :root[data-theme="dark"] .tag-tier.best{border-color:var(--teal-edge)}
   .tag-tier.best .who,.tag-tier.best .per,.tag-tier.best li{color:var(--on-teal-soft)}
   .tag-tier.best .yr{color:var(--amber)}
   .tag-tier.best ul{border-top-color:var(--teal-edge)}
@@ -225,13 +251,16 @@
          data-so="Kobci wuxuu kuu hayaa iibka, bakhaarka, deynta macaamiisha iyo xisaabta maalinlaha ah. Wuxuu ku shaqeeyaa telefoonkaaga iyo internet gaabis ah."
          data-en="Kobci keeps your sales, stock, customer deyn and daily cash in one place. It works on your phone, even on a slow connection.">Kobci wuxuu kuu hayaa iibka, bakhaarka, deynta macaamiisha iyo xisaabta maalinlaha ah. Wuxuu ku shaqeeyaa telefoonkaaga iyo internet gaabis ah.</p>
       <div class="cta-row">
-        <a class="cta t" id="cta-top" href="mailto:info@kobci.so?subject=Kobci%20trial"
+        <a class="cta t" id="cta-top" href="mailto:info@kobci.so?subject=Kobci%20trial&amp;body=Magaca%20ganacsiga:%0A%0AInta%20goobood:%0A"
            data-so="Bilow tijaabada 30-ka maalmood ee bilaashka ah" data-en="Start your free 30-day trial">Bilow tijaabada 30-ka maalmood ee bilaashka ah</a>
         <a class="cta ghost t" href="#qiimaha" data-so="Eeg qiimaha" data-en="See pricing">Eeg qiimaha</a>
       </div>
-      <p class="note t"
+      <p class="note"><span class="t"
          data-so="Email noo soo dir — maalin shaqo gudaheed ayaan kuu diyaarinaynaa. Kaadh lama rabo."
-         data-en="Send us one email — we set you up within a business day. No card needed.">Email noo soo dir — maalin shaqo gudaheed ayaan kuu diyaarinaynaa. Kaadh lama rabo.</p>
+         data-en="Send us one email — we set you up within a business day. No card needed.">Email noo soo dir — maalin shaqo gudaheed ayaan kuu diyaarinaynaa. Kaadh lama rabo.</span><br>
+         <a href="mailto:info@kobci.so?subject=Kobci%20trial&amp;body=Magaca%20ganacsiga:%0A%0AInta%20goobood:%0A" style="color:inherit;font-weight:700">info@kobci.so</a><button
+         type="button" class="copybtn t" data-copy="info@kobci.so" aria-live="polite"
+         data-so="Koobi" data-en="Copy">Koobi</button></p>
     </div>
 
     <div class="artifacts" role="img"
@@ -407,7 +436,7 @@
         <p class="t"
            data-so="Noo soo qor magaca ganacsigaaga iyo inta goobood ee aad leedahay."
            data-en="Write to us with your business name and how many locations you have.">Noo soo qor magaca ganacsigaaga iyo inta goobood ee aad leedahay.</p>
-        <a class="mail" href="mailto:info@kobci.so?subject=Kobci%20trial">info@kobci.so</a><button
+        <a class="mail" href="mailto:info@kobci.so?subject=Kobci%20trial&amp;body=Magaca%20ganacsiga:%0A%0AInta%20goobood:%0A">info@kobci.so</a><button
           type="button" class="copybtn t" data-copy="info@kobci.so" aria-live="polite"
           data-so="Koobi" data-en="Copy">Koobi</button>
       </div>
@@ -436,7 +465,7 @@
 
     <div class="price rv">
       <div class="tag-tier">
-        <div class="name t" data-so="Bilow" data-en="Bilow — Starter"></div>
+        <div class="name t" data-so="Bilow" data-en="Bilow — Starter">Bilow</div>
         <p class="who t" data-so="Dukaanka hal goob leh" data-en="The single-location shop">Dukaanka hal goob leh</p>
         <div class="amt">$9<sup>.99</sup></div>
         <p class="per t" data-so="bishii" data-en="per month">bishii</p>
@@ -452,7 +481,7 @@
 
       <div class="tag-tier best">
         <span class="besttag t" data-so="Ugu caansan" data-en="Most popular">Ugu caansan</span>
-        <div class="name t" data-so="Dhexe" data-en="Dhexe — Business"></div>
+        <div class="name t" data-so="Dhexe" data-en="Dhexe — Business">Dhexe</div>
         <p class="who t" data-so="Ganacsiga sii koraya ee shaqaalaha leh" data-en="The growing business with staff">Ganacsiga sii koraya ee shaqaalaha leh</p>
         <div class="amt">$14<sup>.99</sup></div>
         <p class="per t" data-so="bishii" data-en="per month">bishii</p>
@@ -466,7 +495,7 @@
       </div>
 
       <div class="tag-tier">
-        <div class="name t" data-so="Maamul" data-en="Maamul — Company"></div>
+        <div class="name t" data-so="Maamul" data-en="Maamul — Company">Maamul</div>
         <p class="who t" data-so="Shirkadaha shaqaale badan leh" data-en="Companies with 10+ staff">Shirkadaha shaqaale badan leh</p>
         <div class="amt">$24<sup>.99</sup></div>
         <p class="per t" data-so="bishii" data-en="per month">bishii</p>
@@ -492,6 +521,9 @@
          data-so="Tijaabo 30 maalmood ah oo bilaash. Goor kasta waad joojin kartaa, xogtaadana waad la bixi kartaa."
          data-en="Free 30-day trial. Cancel anytime, and take your data with you.">Tijaabo 30 maalmood ah oo bilaash. Goor kasta waad joojin kartaa, xogtaadana waad la bixi kartaa.</p>
     </div>
+    <!-- the reader convinced AT the pricing table shouldn't have to hunt 2000px for the next action -->
+    <p class="rv" style="margin:30px 0 0"><a class="cta t" href="mailto:info@kobci.so?subject=Kobci%20trial&amp;body=Magaca%20ganacsiga:%0A%0AInta%20goobood:%0A"
+       data-so="Bilow tijaabada 30-ka maalmood ee bilaashka ah" data-en="Start your free 30-day trial">Bilow tijaabada 30-ka maalmood ee bilaashka ah</a></p>
   </section>
 
   <section aria-labelledby="h-trust">
@@ -563,7 +595,7 @@
     <p class="t"
        data-so="Hal email — maalin shaqo gudaheed ayaan kuugu jawaabaynaa."
        data-en="One email — we reply within a business day.">Hal email — maalin shaqo gudaheed ayaan kuugu jawaabaynaa.</p>
-    <a class="cta t" href="mailto:info@kobci.so?subject=Kobci%20trial"
+    <a class="cta t" href="mailto:info@kobci.so?subject=Kobci%20trial&amp;body=Magaca%20ganacsiga:%0A%0AInta%20goobood:%0A"
        data-so="Bilow tijaabada 30-ka maalmood ee bilaashka ah" data-en="Start your free 30-day trial">Bilow tijaabada 30-ka maalmood ee bilaashka ah</a>
     <p class="note" style="margin-top:16px;color:var(--on-teal-soft)"><a href="mailto:info@kobci.so" style="color:inherit">info@kobci.so</a><button
       type="button" class="copybtn t" data-copy="info@kobci.so" aria-live="polite"
@@ -584,6 +616,12 @@
 (function(){
   var nodes = document.querySelectorAll('.t');
   var buttons = document.querySelectorAll('.langs button');
+  // Prefilled draft: the audience's hardest task is composing the email — hand them
+  // fill-in-the-blanks in their own language (step 1's two questions, pre-written).
+  var mailBody = {
+    so: 'Magaca%20ganacsiga:%0A%0AInta%20goobood:%0A',
+    en: 'Business%20name:%0A%0ANumber%20of%20locations:%0A'
+  };
   function apply(lang){
     document.documentElement.lang = lang;
     nodes.forEach(function(el){
@@ -591,6 +629,15 @@
       if (el.dataset.html) { el.innerHTML = v; } else { el.textContent = v; }
     });
     buttons.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
+    document.querySelectorAll('a[href^="mailto:info@kobci.so?"]').forEach(function(a){
+      a.href = 'mailto:info@kobci.so?subject=Kobci%20trial&body=' + mailBody[lang];
+    });
+    var langbox = document.querySelector('.langs');
+    if (langbox) langbox.setAttribute('aria-label', lang === 'so' ? 'Doorashada luqadda' : 'Language');
+    var art = document.querySelector('.artifacts');
+    if (art) art.setAttribute('aria-label', lang === 'so'
+      ? 'Rasiidka Kobci iyo kaadhka deynta macaamiisha, af Soomaali'
+      : 'Kobci receipt and customer deyn card, in Somali');
     try { localStorage.setItem('kobci-lang', lang); } catch(e){}
   }
   buttons.forEach(function(b){
@@ -615,7 +662,15 @@
             btn.dataset.so = so; btn.dataset.en = en;
             btn.textContent = btn.dataset[document.documentElement.lang] || so;
           }, 2000);
-        }).catch(function(){});
+        }).catch(function(){
+          // Clipboard refused (old WebView, permissions): never claim "copied".
+          // Select the visible address instead so the OS long-press copy takes over.
+          var addr = btn.previousElementSibling;
+          if (addr && window.getSelection) {
+            var r = document.createRange(); r.selectNodeContents(addr);
+            var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+          }
+        });
       });
     });
   }
