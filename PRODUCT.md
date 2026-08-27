@@ -13,7 +13,7 @@ Somali shopkeepers, wholesalers, and small producers; owners typically 35–55, 
 Get a business owner to send one email (info@kobci.so) to start a free 30-day trial. No self-serve signup exists; no WhatsApp number yet.
 
 ## Voice
-Plain, concrete, market-floor Somali; no hype, no anglicised jargon. Money claims are conservative and honest (no fabricated numbers). The no-riba (no interest, ever) commitment is a first-class brand promise, not fine print.
+Plain, concrete, market-floor Somali; no hype, no anglicised jargon. Money claims are conservative and honest (no fabricated numbers). The no-added-charges commitment is a first-class brand promise, not fine print — AND (owner ruling 2026-08-27) the words "interest/dulsaar/ribo" are TABOO and must never appear in copy; the promise is always framed positively ("the price is fixed", "nothing is ever added").
 
 ## Brand system (committed — honor it)
 - **Mark:** K-arrow (brand/mark.svg, currentColor, hand-authored 32×32; chosen over 12 audited concepts — see brand/RATIONALE.md). Wordmark "Kobci" with the "ci" in accent.
@@ -25,4 +25,4 @@ Plain, concrete, market-floor Somali; no hype, no anglicised jargon. Money claim
 - Static single-file HTML per page (GitHub Pages, no build step). Bilingual via the data-so/data-en + JS toggle system — every visible string has both.
 - Lightweight: slow-connection audience; no heavy images/video; inline SVG over rasters; at most one webfont with system fallback.
 - Accessibility: AAA-minded contrast, 44px tap targets, reduced-motion honored.
-- Content laws: prices/tiers only as panel-finalized ($9.99/$14.99/$24.99, annual 2-months-free); trial copy must never promise self-serve/instant; no testimonials or traction numbers until real; email is the only contact; "not a tax system" stays; no-riba stays.
+- Content laws: prices/tiers only as panel-finalized ($9.99/$14.99/$24.99, annual 2-months-free); trial copy must never promise self-serve/instant; no testimonials or traction numbers until real; email is the only contact; "not a tax system" stays; the fixed-price/nothing-added promise stays (interest vocabulary itself is banned, see Voice); every feature claim must map to a shipped capability (2026-08-27 audit removed a false "expiry tracking" claim).
