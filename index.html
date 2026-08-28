@@ -101,7 +101,7 @@
   /* ---------- hero: drenched storefront ---------- */
   .hero{background:var(--teal-night);color:var(--on-teal);overflow:hidden;position:relative}
   .hero .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,5vw,64px);
-              align-items:center;padding-top:clamp(40px,7vw,84px);padding-bottom:clamp(56px,8vw,104px)}
+              align-items:center;padding-top:clamp(36px,5.5vw,64px);padding-bottom:clamp(48px,7vw,88px)}
   .hero h1{font-size:40px;font-size:clamp(34px,5.6vw,62px);line-height:1.06;letter-spacing:-.025em;font-weight:800;margin:0 0 20px}
   .hero h1 em{font-style:normal;color:var(--amber)}
   .lede{font-size:clamp(17px,2.2vw,20px);line-height:1.6;color:var(--on-teal-soft);margin:0 0 30px;max-width:34em}
@@ -128,22 +128,63 @@
   .copyhint{display:none}
   .js-copy .copyhint{display:block;font-size:13px;margin-top:4px}
   /* 30-day trial as an object: 29 quiet days, one amber decision day */
-  .trialcal{display:flex;gap:3px;flex-wrap:wrap;margin:6px 0 2px;max-width:360px}
-  .trialcal i{width:9px;height:9px;border-radius:2px;background:var(--teal);opacity:.45}
-  .trialcal i:last-child{background:none;border:2px solid var(--amber);opacity:1;width:7px;height:7px}
+  .trialcal{display:flex;gap:2px;flex-wrap:wrap;margin:6px 0 2px;max-width:360px}
+  .trialcal i{width:8px;height:8px;border-radius:2px;background:var(--teal);opacity:.45}
+  .trialcal i:last-child{background:none;border:2px solid var(--amber);opacity:1;width:6px;height:6px}
 
   /* receipt collage */
   .artifacts{position:relative;min-height:500px;filter:drop-shadow(0 18px 28px rgba(0,0,0,.35))}
   .artifacts svg{position:absolute;height:auto;will-change:transform}
   .a-receipt{width:min(70%,272px);right:0;top:0;transform:rotate(2.5deg)}
-  .a-deyn{width:min(74%,286px);left:0;bottom:0;transform:rotate(-2deg)}
+  .a-close{width:min(74%,286px);left:0;bottom:0;transform:rotate(-2deg)}
   @media (max-width:820px){
     .hero .wrap{grid-template-columns:1fr}
     .artifacts{min-height:0;height:auto;display:flex;flex-wrap:wrap;gap:14px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.3))}
     .art-cap{position:static;flex-basis:100%;margin-top:6px}
     .artifacts svg{position:static;flex:1 1 0;width:auto;max-width:49%;transform:none}
   }
-  @media (max-width:480px){ .artifacts svg.a-deyn{display:none} .artifacts svg.a-receipt{max-width:86%;margin:0 auto} }
+  /* small phones: the close card is the thesis — stack it under the receipt, never hide it (V1) */
+  @media (max-width:480px){ .artifacts svg.a-receipt,.artifacts svg.a-close{flex-basis:100%;max-width:86%;margin:0 auto} }
+
+  /* envelope: the reader's own message, visible before he sends it (R-KOB2-5) */
+  .envcard{border:1.5px solid var(--teal-edge);border-radius:12px;background:rgba(0,0,0,.15);
+           padding:14px 18px;margin-top:18px;max-width:26em;font-size:14.5px}
+  .envcard .row{display:flex;gap:8px;padding:3px 0}
+  .envcard .k{color:var(--on-teal-soft);flex:none}
+  .envcard .blank{flex:1;border-bottom:2px dashed var(--teal-edge);min-width:60px}
+
+  /* waraaq: the shared paper sheet — the reply letter and the ballan are two
+     papers from the same desk (R-KOB2-6; strict extraction, promise keeps its modifiers) */
+  .waraaq{background:var(--day);border:1.5px solid var(--line);border-radius:4px;
+    box-shadow:0 10px 22px rgba(0,0,0,.09);position:relative}
+  .waraaq::before{content:"";display:block;border-top:2px dashed var(--line);
+    position:absolute;top:14px;left:24px;right:24px}
+  .letter{max-width:620px;padding:clamp(28px,4vw,44px) clamp(24px,4vw,40px) clamp(20px,3vw,30px);
+          transform:rotate(.35deg)}
+  .letter .from{font-size:13.5px;color:var(--ink-soft);letter-spacing:.02em;margin:0 0 16px}
+  .letter p{margin:0 0 12px;font-size:16.5px;max-width:52ch}
+  .letter .sig{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);
+    display:flex;align-items:center;justify-content:flex-end;gap:10px;font-size:14.5px;color:var(--ink-soft)}
+  .letter .sig svg{width:22px;height:22px;color:var(--teal)}
+
+  /* daystrip: the shop's day, subax to fiid, on one darkening beat line (R-KOB2-1) */
+  .daystrip{list-style:none;margin:0;padding:0}
+  .beat{display:grid;grid-template-columns:minmax(0,72px) minmax(0,340px) minmax(0,1fr);
+        gap:clamp(18px,3vw,40px);align-items:center;
+        padding:clamp(22px,3vw,34px) 0 clamp(22px,3vw,34px) 22px;border-left:4px solid var(--beatline)}
+  .beat:nth-child(1){--beatline:var(--day-2)}
+  .beat:nth-child(2){--beatline:var(--teal)}
+  .beat:nth-child(3){--beatline:var(--teal-deep)}
+  .beat:nth-child(4){--beatline:var(--teal-night)}
+  .when{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:15px;
+        letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep)}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .when{color:var(--teal)} }
+  :root[data-theme="dark"] .when{color:var(--teal)}
+  .bart{display:flex;justify-content:center}
+  .bart svg{width:min(100%,340px);height:auto}
+  .beat h3{font-size:clamp(19px,2.4vw,24px);font-weight:700;margin:0 0 8px}
+  .beat p{margin:0;color:var(--ink-soft);font-size:16px;max-width:36em}
+  @media (max-width:720px){ .beat{grid-template-columns:1fr;gap:12px} .bart{justify-content:flex-start} .bart svg{width:min(100%,340px)} }
 
   /* ---------- sections ---------- */
   main section{padding:56px 0;padding:clamp(48px,7vw,88px) 0}
@@ -152,16 +193,6 @@
   h2{font-size:30px;font-size:clamp(26px,3.6vw,38px);line-height:1.15;letter-spacing:-.02em;font-weight:800;margin:0 0 10px}
   .sub{color:var(--ink-soft);margin:0 0 36px;max-width:44em;font-size:17px}
 
-  /* feature rows: artifact + text, alternating */
-  .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(22px,4.5vw,56px);
-        align-items:center;padding:clamp(20px,3vw,34px) 0}
-  .frow + .frow{border-top:1px dashed var(--line)}
-  .frow:nth-child(even) .fart{order:2}
-  @media (max-width:720px){ .frow{grid-template-columns:1fr} .frow:nth-child(even) .fart{order:0} }
-  .frow h3{font-size:clamp(20px,2.6vw,26px);font-weight:700;margin:0 0 10px}
-  .frow p{margin:0;color:var(--ink-soft);font-size:16.5px;max-width:36em}
-  .fart{display:flex;justify-content:center}
-  .fart svg{width:min(100%,340px);height:auto}
 
   /* how it works — a true sequence, numbers earned */
   .steps{counter-reset:step;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,3vw,28px)}
@@ -201,10 +232,7 @@
   .price-notes strong{color:var(--ink)}
 
   /* trust — the signed ballan: a promise made on paper, in the receipt's idiom */
-  .promise{background:var(--day);border:1.5px solid var(--line);border-radius:4px;
-    box-shadow:0 10px 22px rgba(0,0,0,.09);position:relative;transform:rotate(-.4deg)}
-  .promise::before{content:"";display:block;border-top:2px dashed var(--line);
-    position:absolute;top:14px;left:24px;right:24px}
+  .promise{transform:rotate(-.4deg)}
   .promise .sig{margin-top:18px;padding-top:12px;border-top:1px dashed var(--line);
     display:flex;align-items:center;justify-content:flex-end;gap:10px;font-size:14.5px;color:var(--ink-soft)}
   .promise .sig svg{width:22px;height:22px;color:var(--teal)}
@@ -251,19 +279,22 @@
   .js-reveal .rv.in > .step:nth-child(2),.js-reveal .rv.in > .tag-tier:nth-child(2){animation:rise .6s cubic-bezier(.22,1,.36,1) both .09s}
   .js-reveal .rv.in > .step:nth-child(3),.js-reveal .rv.in > .tag-tier:nth-child(3){animation:rise .6s cubic-bezier(.22,1,.36,1) both .18s}
 
-  /* focal entrance: the counter moment — the receipt prints down, the deyn card
-     lands after it, then the EVC confirmation row pulses once. Plays once on load;
+  /* focal entrance: the counter moment — the receipt prints down, the daily-close
+     card lands after it, then the check line types itself once. Plays once on load;
      default state stays fully visible (the class only ADDS the play). */
   @keyframes printdown{from{opacity:0;transform:rotate(2.5deg) translateY(-26px)}60%{opacity:1;transform:rotate(2.5deg) translateY(4px)}to{opacity:1;transform:rotate(2.5deg) translateY(0)}}
   @keyframes landcard{from{opacity:0;transform:rotate(-2deg) translateY(18px) scale(.985)}to{opacity:1;transform:rotate(-2deg) translateY(0) scale(1)}}
   @keyframes settle{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   .js-reveal .hero.play .a-receipt{animation:printdown .7s cubic-bezier(.16,1,.3,1) both .1s}
-  .js-reveal .hero.play .a-deyn{animation:landcard .6s cubic-bezier(.16,1,.3,1) both .32s}
+  .js-reveal .hero.play .a-close{animation:landcard .6s cubic-bezier(.16,1,.3,1) both .32s}
+  /* the one authored moment: the day closes and the check line prints itself (R-KOB2-7) */
+  @keyframes typeline{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+  .js-reveal .hero.play .a-close .checkline{animation:typeline .5s steps(14,end) both 1s}
   .js-reveal .hero.play h1{animation:settle .55s cubic-bezier(.16,1,.3,1) both}
   .js-reveal .hero.play .lede{animation:settle .55s cubic-bezier(.16,1,.3,1) both .08s}
   .js-reveal .hero.play .cta-row{animation:settle .55s cubic-bezier(.16,1,.3,1) both .16s}
   .js-reveal .hero.play .note{animation:settle .55s cubic-bezier(.16,1,.3,1) both .22s}
-  @media (max-width:820px){ .js-reveal .hero.play .a-receipt,.js-reveal .hero.play .a-deyn{animation-name:settle} }
+  @media (max-width:820px){ .js-reveal .hero.play .a-receipt,.js-reveal .hero.play .a-close{animation-name:settle} }
 
   /* language crossfade: the swap reads as one intentional change, not a flicker */
   .swapping main,.swapping .hero .wrap,.swapping .close-band .wrap,.swapping footer .wrap{opacity:0}
@@ -289,7 +320,8 @@
   .ctabar a.qlink{color:var(--on-teal-soft);font-size:14px;font-weight:700;min-height:44px;display:inline-flex;align-items:center}
   @media (prefers-reduced-motion: reduce){
     .js-reveal .rv.in,.js-reveal .rv.in > .step,.js-reveal .rv.in > .tag-tier,
-    .js-reveal .hero.play .a-receipt,.js-reveal .hero.play .a-deyn,
+    .js-reveal .hero.play .a-receipt,.js-reveal .hero.play .a-close,
+    .js-reveal .hero.play .a-close .checkline,
     .js-reveal .hero.play h1,.js-reveal .hero.play .lede,.js-reveal .hero.play .cta-row,.js-reveal .hero.play .note{animation:none}
     .cta,.cta:hover,.cta:active{transition:none;transform:none}
     .faq summary::after{transition:none}
@@ -319,9 +351,9 @@
   <div class="wrap">
     <div>
       <h1 class="t"
-          data-so="Dukaankaaga, deyntaada, lacagtaada — hal daftar oo <em>af Soomaali ah</em>."
-          data-en="Your shop, your deyn, your cash — one ledger, <em>in Somali</em>."
-          data-html="1">Dukaankaaga, deyntaada, lacagtaada — hal daftar oo <em>af Soomaali ah</em>.</h1>
+          data-so="Fiid kasta, xisaabtaadu waa dhan tahay — iibka, deynta, lacagta, hal daftar oo <em>af Soomaali ah</em>."
+          data-en="Every evening your books balance — sales, deyn, cash, one ledger <em>in Somali</em>."
+          data-html="1">Fiid kasta, xisaabtaadu waa dhan tahay — iibka, deynta, lacagta, hal daftar oo <em>af Soomaali ah</em>.</h1>
       <p class="lede t"
          data-so="Kobci wuxuu kuu hayaa iibka, bakhaarka, deynta macaamiisha iyo xisaabta maalinlaha ah. Wuxuu ku shaqeeyaa telefoonkaaga iyo internet gaabis ah."
          data-en="Kobci keeps your sales, stock, customer deyn and daily cash in one place. It works on your phone, even on a slow connection.">Kobci wuxuu kuu hayaa iibka, bakhaarka, deynta macaamiisha iyo xisaabta maalinlaha ah. Wuxuu ku shaqeeyaa telefoonkaaga iyo internet gaabis ah.</p>
@@ -336,10 +368,17 @@
          <a class="hero-mail" href="mailto:info@kobci.so?subject=Kobci%20trial&amp;body=Magaca%20ganacsiga:%0A%0AInta%20goobood:%0A">info@kobci.so</a><button
          type="button" class="copybtn t" data-copy="info@kobci.so"
          data-so="Koobi" data-en="Copy">Koobi</button><span class="sr-only" aria-live="polite"></span><span class="copyhint t" data-so="Koobi &#8594; fur emailkaaga &#8594; ku dheji oo dir" data-en="Copy &#8594; open your email &#8594; paste and send">Koobi &#8594; fur emailkaaga &#8594; ku dheji oo dir</span></p>
+      <!-- the reader's own message, readable before he sends it (mirrors the mailto prefill) -->
+      <div class="envcard">
+        <div class="row"><span class="k t" data-so="Ku dir:" data-en="To:">Ku dir:</span><span>info@kobci.so</span></div>
+        <div class="row"><span class="k t" data-so="Ujeeddo:" data-en="Subject:">Ujeeddo:</span><span class="t" data-so="Kobci tijaabo" data-en="Kobci trial">Kobci tijaabo</span></div>
+        <div class="row"><span class="k t" data-so="Magaca ganacsiga:" data-en="Business name:">Magaca ganacsiga:</span><span class="blank"></span></div>
+        <div class="row"><span class="k t" data-so="Inta goobood:" data-en="Number of locations:">Inta goobood:</span><span class="blank"></span></div>
+      </div>
     </div>
 
     <div class="artifacts" role="img"
-         aria-label="Kobci receipt and customer deyn card, in Somali">
+         aria-label="Rasiidka Kobci iyo xisaab-xirka maanta, af Soomaali">
       <!-- receipt -->
       <svg class="a-receipt" viewBox="0 0 300 400" aria-hidden="true">
         <path d="M8 0 h284 v386 l-14 12 -14 -12 -14 12 -14 -12 -14 12 -14 -12 -14 12 -14 -12 -14 12 -14 -12 -14 12 -14 -12 -14 12 -14 -12 -14 12 -14 -12 -14 12 -14 -12 -14 12 -14 -12 -14 12 -14 -12z" fill="#ffffff"/>
@@ -369,73 +408,62 @@
           <text x="150" y="330" text-anchor="middle" font-size="13" fill="#0d7a6b" font-weight="bold">Mahadsanid!</text>
         </g>
       </svg>
-      <!-- deyn ledger card -->
-      <svg class="a-deyn" viewBox="0 0 320 240" aria-hidden="true">
+      <!-- daily-close card: the fiid moment, promoted to the hero (R-KOB2-2) -->
+      <svg class="a-close" viewBox="0 0 320 240" aria-hidden="true">
         <rect x="0" y="0" width="320" height="240" rx="18" fill="#ffffff" stroke="#d8e4e0" stroke-width="1.5"/>
-        <text x="24" y="40" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="17" font-weight="800" fill="#122522">Deynta macaamiisha</text>
-        <g font-family="Arial, sans-serif">
-          <circle cx="40" cy="82" r="16" fill="#eef5f2"/>
-          <text x="40" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#0d7a6b">XC</text>
-          <text x="66" y="78" font-size="14.5" font-weight="bold" fill="#122522">Xaliimo Cabdi</text>
-          <text x="66" y="96" font-size="12" fill="#3d524d">3 iibsi · bixintii u dambaysay: Arbaco</text>
-          <text x="296" y="86" text-anchor="end" font-size="17" font-weight="bold" fill="#7a4b06">$12.50</text>
+        <text x="24" y="40" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="17" font-weight="800" fill="#122522">Xisaabta maanta — Khamiis</text>
+        <g font-family="Arial, sans-serif" font-size="14.5">
+          <text x="24" y="80" fill="#3d524d">Caddaan</text>
+          <text x="296" y="80" text-anchor="end" font-weight="bold" fill="#122522">$184.30</text>
+          <text x="24" y="110" fill="#3d524d">Wallet (EVC · eDahab)</text>
+          <text x="296" y="110" text-anchor="end" font-weight="bold" fill="#122522">$96.00</text>
+          <text x="24" y="140" fill="#3d524d">Deyn maanta</text>
+          <text x="296" y="140" text-anchor="end" font-weight="bold" fill="#7a4b06">+$12.50</text>
         </g>
-        <line x1="24" y1="116" x2="296" y2="116" stroke="#e7ecea" stroke-width="1.5"/>
-        <g font-family="Arial, sans-serif">
-          <circle cx="40" cy="146" r="16" fill="#eef5f2"/>
-          <text x="40" y="151" text-anchor="middle" font-size="13" font-weight="bold" fill="#0d7a6b">AW</text>
-          <text x="66" y="142" font-size="14.5" font-weight="bold" fill="#122522">Axmed Warsame</text>
-          <text x="66" y="160" font-size="12" fill="#3d524d">deyntii waa la gudey</text>
-          <text x="296" y="150" text-anchor="end" font-size="17" font-weight="bold" fill="#0d7a6b">$0.00</text>
+        <line x1="24" y1="164" x2="296" y2="164" stroke="#d8e4e0" stroke-width="2" stroke-dasharray="4 5"/>
+        <g class="checkline">
+          <circle cx="36" cy="196" r="9" fill="#0d7a6b"/>
+          <path d="M31.5 196 l3.2 3.2 6 -6.6" stroke="#eafaf5" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          <text x="54" y="201" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="15.5" font-weight="800" fill="#0d7a6b">Wax maqan ma jiraan</text>
         </g>
-        <rect x="24" y="182" width="272" height="38" rx="10" fill="#0d7a6b"/>
-        <text x="160" y="206" text-anchor="middle" font-family="Bricolage Grotesque, Arial, sans-serif"
-              font-size="15" font-weight="800" fill="#eafaf5">BIXI DEYNTA</text>
       </svg>
-    
+
       <p class="art-cap t"
-         data-so="Sida uu Kobci u maamulo iibka iyo deynta &#8212; af Soomaali."
-         data-en="How Kobci handles your sales and deyn &#8212; in Somali.">Sida uu Kobci u maamulo iibka iyo deynta &#8212; af Soomaali.</p>
+         data-so="Rasiidka iyo xisaab-xirka maanta &#8212; af Soomaali."
+         data-en="Today's receipt and daily close &#8212; in Somali.">Rasiidka iyo xisaab-xirka maanta &#8212; af Soomaali.</p>
     </div>
   </div>
 </div>
 
 <main class="wrap" id="main">
 
-  <section aria-labelledby="h-features">
-    <h2 id="h-features" class="t rv" data-so="Waxa uu kuu qabanayo" data-en="What it does for you">Waxa uu kuu qabanayo</h2>
+  <section aria-labelledby="h-jawaab">
+    <h2 id="h-jawaab" class="t rv" data-so="Jawaabta aad heli doonto" data-en="The reply you will get">Jawaabta aad heli doonto</h2>
     <p class="sub t rv"
-       data-so="Afar shay oo maalin kasta muhiim kuu ah — sida daftarkaagii, laakiin telefoonkaaga."
-       data-en="The four things that matter every day — like your paper ledger, but on your phone.">Afar shay oo maalin kasta muhiim kuu ah — sida daftarkaagii, laakiin telefoonkaaga.</p>
-
-    <div class="frow rv">
-      <div class="fart">
-        <svg viewBox="0 0 340 150" aria-hidden="true">
-          <rect x="0" y="0" width="340" height="150" rx="16" fill="var(--day-2)"/>
-          <rect x="22" y="24" width="130" height="44" rx="10" fill="var(--teal)"/>
-          <text x="87" y="51" text-anchor="middle" font-family="Bricolage Grotesque, Arial" font-size="16" font-weight="800" fill="#eafaf5">$6.50</text>
-          <rect x="22" y="82" width="130" height="44" rx="10" fill="var(--day)" stroke="var(--line)" stroke-width="1.5"/>
-          <text x="87" y="109" text-anchor="middle" font-family="Arial" font-size="14" fill="var(--ink)">Lacag caddaan</text>
-          <rect x="168" y="24" width="150" height="102" rx="10" fill="var(--day)" stroke="var(--line)" stroke-width="1.5"/>
-          <text x="186" y="52" font-family="Arial" font-size="14.5" fill="var(--ink-soft)">EVC Plus</text>
-          <text x="300" y="52" text-anchor="end" font-family="Arial" font-size="14.5" font-weight="bold" fill="var(--ink)">$4.25</text>
-          <text x="186" y="78" font-family="Arial" font-size="14.5" fill="var(--ink-soft)">eDahab</text>
-          <text x="300" y="78" text-anchor="end" font-family="Arial" font-size="14.5" font-weight="bold" fill="var(--ink)">$2.20</text>
-          <text x="186" y="104" font-family="Arial" font-size="14.5" fill="var(--ink-soft)">Deyn</text>
-          <text x="300" y="104" text-anchor="end" font-family="Arial" font-size="14.5" font-weight="bold" fill="var(--amber-ink)">$12.50</text>
-        </svg>
-      </div>
-      <div>
-        <h3 class="t" data-so="Iibka degdegga ah" data-en="Fast selling">Iibka degdegga ah</h3>
-        <p class="t"
-           data-so="Iib ku samee daqiiqado. Lacag caddaan ah, EVC Plus, eDahab ama deyn — mid kasta waa la diiwaangelinayaa, rasiidkuna waa diyaar."
-           data-en="Ring up a sale in seconds — cash, EVC Plus, eDahab or deyn. Every sale is recorded and the receipt is ready.">Iib ku samee daqiiqado. Lacag caddaan ah, EVC Plus, eDahab ama deyn — mid kasta waa la diiwaangelinayaa, rasiidkuna waa diyaar.</p>
-      </div>
+       data-so="Emailkaaga ka dib, waxan oo kale ayaa kuu imanaya."
+       data-en="After your email, this is what comes back.">Emailkaaga ka dib, waxan oo kale ayaa kuu imanaya.</p>
+    <div class="waraaq letter rv">
+      <p class="from t" data-so="Ka timid: info@kobci.so · Berri, 9:14" data-en="From: info@kobci.so · Tomorrow, 9:14">Ka timid: info@kobci.so · Berri, 9:14</p>
+      <p class="t" data-so="Salaan, [magaca ganacsigaaga]," data-en="Salaan, [your business name],">Salaan, [magaca ganacsigaaga],</p>
+      <p class="t"
+         data-so="Waan helnay emailkaaga. Nidaamkaaga annagaa kuu diyaarinayna; maalin shaqo gudaheed ayuu diyaar kuu noqonayaa."
+         data-en="We received your email. We are preparing your system for you; it will be ready within one business day.">Waan helnay emailkaaga. Nidaamkaaga annagaa kuu diyaarinayna; maalin shaqo gudaheed ayuu diyaar kuu noqonayaa.</p>
+      <p class="t"
+         data-so="30-ka maalmood ee hore waa bilaash. Kaadh lama rabo."
+         data-en="Your first 30 days are free. No card needed.">30-ka maalmood ee hore waa bilaash. Kaadh lama rabo.</p>
+      <p class="sig"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="currentColor"><path d="M5 3.5 H10.5 V9.7 C8.4 11.8 6.4 14.2 5 16.6 Z"/><path d="M6 28.5 L6 21.2 C6 17.6 8.2 14.7 11.2 12.4 C13.7 10.1 16.2 7.6 18.6 5.2 C18 4.1 17.3 3.3 16.2 2.8 C19.4 2.1 22.6 1.5 25.8 1 L26.4 1.6 C26.1 4.8 25.7 8 25.2 11.2 C24.3 10 23.4 9.5 22.6 9.5 C20 11.5 17.3 13.6 14.7 15.6 L26.2 28.5 H20.4 L11.5 18.2 C11 21.5 10.7 24.9 10.7 28.5 Z"/></g></svg><span class="t" data-so="— Kooxda Kobci · info@kobci.so" data-en="— The Kobci team · info@kobci.so">— Kooxda Kobci · info@kobci.so</span></p>
     </div>
+  </section>
 
-    <div class="frow rv">
-      <div class="fart">
-        <svg viewBox="0 0 340 150" aria-hidden="true">
+  <section aria-labelledby="h-day">
+    <h2 id="h-day" class="t rv" data-so="Maalinta dukaankaaga" data-en="Your shop's day">Maalinta dukaankaaga</h2>
+    <p class="sub t rv"
+       data-so="Subax ilaa fiid: sida aad maalin walba u shaqayso, laakiin telefoonkaaga."
+       data-en="Morning to evening: the way you already work, but on your phone.">Subax ilaa fiid: sida aad maalin walba u shaqayso, laakiin telefoonkaaga.</p>
+    <ol class="daystrip">
+      <li class="beat rv">
+        <span class="when t" data-so="Subax" data-en="Morning">Subax</span>
+        <div class="bart"><svg viewBox="0 0 340 150" aria-hidden="true">
           <rect x="0" y="0" width="340" height="150" rx="16" fill="var(--day-2)"/>
           <g font-family="Arial">
             <rect x="22" y="26" width="196" height="12" rx="6" fill="var(--teal)"/>
@@ -446,43 +474,65 @@
             <text x="230" y="101" font-size="14" font-weight="bold" fill="var(--amber-ink)">Sonkor · 4 kg!</text>
             <text x="22" y="132" font-size="14" fill="var(--ink-soft)">Sonkor waa yaraaday — soo iibso kahor Sabtida.</text>
           </g>
-        </svg>
-      </div>
-      <div>
-        <h3 class="t" data-so="Bakhaarka iyo digniinta kaydka" data-en="Stock and low-stock alerts">Bakhaarka iyo digniinta kaydka</h3>
-        <p class="t"
-           data-so="Ogow waxa kuu haray, waxa dhammaaday, iyo waxa sii yaraanaya — sidaas ayaad khasaaraha uga hortagaysaa."
-           data-en="Know what is left, what ran out, and what is running low — so you stop losing stock.">Ogow waxa kuu haray, waxa dhammaaday, iyo waxa sii yaraanaya — sidaas ayaad khasaaraha uga hortagaysaa.</p>
-      </div>
-    </div>
-
-    <div class="frow rv">
-      <div class="fart">
-        <svg viewBox="0 0 340 150" aria-hidden="true">
+        </svg></div>
+        <div>
+          <h3 class="t" data-so="Bakhaarka iyo digniinta kaydka" data-en="Stock and low-stock alerts">Bakhaarka iyo digniinta kaydka</h3>
+          <p class="t" data-so="Ogow waxa kuu haray, waxa dhammaaday, iyo waxa sii yaraanaya — sidaas ayaad khasaaraha uga hortagaysaa." data-en="Know what is left, what ran out, and what is running low — so you stop losing stock.">Ogow waxa kuu haray, waxa dhammaaday, iyo waxa sii yaraanaya — sidaas ayaad khasaaraha uga hortagaysaa.</p>
+        </div>
+      </li>
+      <li class="beat rv">
+        <span class="when t" data-so="Duhur" data-en="Midday">Duhur</span>
+        <div class="bart"><svg viewBox="0 0 340 150" aria-hidden="true">
           <rect x="0" y="0" width="340" height="150" rx="16" fill="var(--day-2)"/>
-          <g font-family="Arial">
-            <text x="22" y="40" font-size="14" font-weight="bold" fill="var(--ink)">Xaliimo Cabdi</text>
-            <text x="318" y="40" text-anchor="end" font-size="14" font-weight="bold" fill="var(--amber-ink)">$12.50</text>
-            <line x1="22" y1="54" x2="318" y2="54" stroke="var(--paperline)" stroke-width="1.5"/>
-            <text x="22" y="78" font-size="14.5" fill="var(--ink-soft)">Sabti — iibsi</text>
-            <text x="318" y="78" text-anchor="end" font-size="14.5" fill="var(--ink)">+$8.00</text>
-            <text x="22" y="100" font-size="14.5" fill="var(--ink-soft)">Arbaco — bixin</text>
-            <text x="318" y="100" text-anchor="end" font-size="14.5" fill="var(--teal)">−$3.50</text>
-            <text x="22" y="132" font-size="14" font-weight="bold" fill="var(--teal)">Deyntu waa sidaad u qortay — wax laguma daro.</text>
+          <rect x="22" y="24" width="130" height="44" rx="10" fill="var(--teal)"/>
+          <text x="87" y="51" text-anchor="middle" font-family="Bricolage Grotesque, Arial" font-size="16" font-weight="800" fill="#eafaf5">$3.75</text>
+          <rect x="22" y="82" width="130" height="44" rx="10" fill="var(--day)" stroke="var(--line)" stroke-width="1.5"/>
+          <text x="87" y="109" text-anchor="middle" font-family="Arial" font-size="14" fill="var(--ink)">Lacag caddaan</text>
+          <rect x="168" y="24" width="150" height="102" rx="10" fill="var(--day)" stroke="var(--line)" stroke-width="1.5"/>
+          <text x="186" y="52" font-family="Arial" font-size="14.5" fill="var(--ink-soft)">EVC Plus</text>
+          <text x="300" y="52" text-anchor="end" font-family="Arial" font-size="14.5" font-weight="bold" fill="var(--ink)">$12.95</text>
+          <text x="186" y="78" font-family="Arial" font-size="14.5" fill="var(--ink-soft)">eDahab</text>
+          <text x="300" y="78" text-anchor="end" font-family="Arial" font-size="14.5" font-weight="bold" fill="var(--ink)">$8.40</text>
+          <text x="186" y="104" font-family="Arial" font-size="14.5" fill="var(--ink-soft)">Deyn</text>
+          <text x="300" y="104" text-anchor="end" font-family="Arial" font-size="14.5" font-weight="bold" fill="var(--amber-ink)">$12.50</text>
+        </svg></div>
+        <div>
+          <h3 class="t" data-so="Iibka degdegga ah" data-en="Fast selling">Iibka degdegga ah</h3>
+          <p class="t" data-so="Iib ku samee daqiiqado. Lacag caddaan ah, EVC Plus, eDahab ama deyn — mid kasta waa la diiwaangelinayaa, rasiidkuna waa diyaar." data-en="Ring up a sale in seconds — cash, EVC Plus, eDahab or deyn. Every sale is recorded and the receipt is ready.">Iib ku samee daqiiqado. Lacag caddaan ah, EVC Plus, eDahab ama deyn — mid kasta waa la diiwaangelinayaa, rasiidkuna waa diyaar.</p>
+        </div>
+      </li>
+      <li class="beat rv">
+        <span class="when t" data-so="Casar" data-en="Afternoon">Casar</span>
+        <div class="bart"><svg viewBox="0 0 320 240" aria-hidden="true">
+          <rect x="0" y="0" width="320" height="240" rx="18" fill="#ffffff" stroke="#d8e4e0" stroke-width="1.5"/>
+          <text x="24" y="40" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="17" font-weight="800" fill="#122522">Deynta macaamiisha</text>
+          <g font-family="Arial, sans-serif">
+            <circle cx="40" cy="82" r="16" fill="#eef5f2"/>
+            <text x="40" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#0d7a6b">XC</text>
+            <text x="66" y="78" font-size="14.5" font-weight="bold" fill="#122522">Xaliimo Cabdi</text>
+            <text x="66" y="96" font-size="12" fill="#3d524d">Khamiis — iibsi maanta</text>
+            <text x="296" y="86" text-anchor="end" font-size="17" font-weight="bold" fill="#7a4b06">$12.50</text>
           </g>
-        </svg>
-      </div>
-      <div>
-        <h3 class="t" data-so="Deynta macaamiisha" data-en="Customer deyn">Deynta macaamiisha</h3>
-        <p class="t"
-           data-so="Macmiil kasta iyo intii uu kugu leeyahay — hal shaashad. Bixin kasta waa la diiwaangelinayaa; deyntu waxay ahaanaysaa sidaad u qortay."
-           data-en="Every customer and exactly what they owe — one screen. Every payment recorded, and the deyn stays exactly as you wrote it.">Macmiil kasta iyo intii uu kugu leeyahay — hal shaashad. Bixin kasta waa la diiwaangelinayaa; deyntu waxay ahaanaysaa sidaad u qortay.</p>
-      </div>
-    </div>
-
-    <div class="frow rv">
-      <div class="fart">
-        <svg viewBox="0 0 340 150" aria-hidden="true">
+          <line x1="24" y1="116" x2="296" y2="116" stroke="#e7ecea" stroke-width="1.5"/>
+          <g font-family="Arial, sans-serif">
+            <circle cx="40" cy="146" r="16" fill="#eef5f2"/>
+            <text x="40" y="151" text-anchor="middle" font-size="13" font-weight="bold" fill="#0d7a6b">AW</text>
+            <text x="66" y="142" font-size="14.5" font-weight="bold" fill="#122522">Axmed Warsame</text>
+            <text x="66" y="160" font-size="12" fill="#3d524d">deyntii waa la gudey</text>
+            <text x="296" y="150" text-anchor="end" font-size="17" font-weight="bold" fill="#0d7a6b">$0.00</text>
+          </g>
+          <rect x="24" y="182" width="272" height="38" rx="10" fill="#0d7a6b"/>
+          <text x="160" y="206" text-anchor="middle" font-family="Bricolage Grotesque, Arial, sans-serif"
+                font-size="15" font-weight="800" fill="#eafaf5">BIXI DEYNTA</text>
+        </svg></div>
+        <div>
+          <h3 class="t" data-so="Deynta diiwaangashan" data-en="Deyn, written down">Deynta diiwaangashan</h3>
+          <p class="t" data-so="Macmiil kasta iyo intii uu kugu leeyahay — hal shaashad. Deyntu waxay ahaanaysaa sidaad u qortay; wax laguma daro." data-en="Every customer and exactly what they owe — one screen. The deyn stays exactly as you wrote it; nothing is ever added.">Macmiil kasta iyo intii uu kugu leeyahay — hal shaashad. Deyntu waxay ahaanaysaa sidaad u qortay; wax laguma daro.</p>
+        </div>
+      </li>
+      <li class="beat rv">
+        <span class="when t" data-so="Fiid" data-en="Evening">Fiid</span>
+        <div class="bart"><svg viewBox="0 0 340 150" aria-hidden="true">
           <rect x="0" y="0" width="340" height="150" rx="16" fill="var(--teal-night)"/>
           <g font-family="Arial">
             <text x="22" y="38" font-size="14.5" fill="#b9ded4">Xisaabta maanta — Khamiis</text>
@@ -490,17 +540,16 @@
             <text x="22" y="96" font-size="14" fill="#b9ded4">caddaan</text>
             <text x="170" y="74" font-family="Bricolage Grotesque, Arial" font-size="26" font-weight="800" fill="#eafaf5">$96.00</text>
             <text x="170" y="96" font-size="14" fill="#b9ded4">wallet</text>
-            <text x="22" y="130" font-size="14" fill="#e8a13d" font-weight="bold">Wax maqan ma jiraan ✓</text>
+            <text x="22" y="120" font-size="13.5" fill="#b9ded4">Deyn maanta · <tspan fill="#f2b263" font-weight="bold">+$12.50</tspan></text>
+            <text x="22" y="140" font-size="14" fill="#e8a13d" font-weight="bold">Wax maqan ma jiraan ✓</text>
           </g>
-        </svg>
-      </div>
-      <div>
-        <h3 class="t" data-so="Xisaabta maalinlaha ah" data-en="Daily close">Xisaabta maalinlaha ah</h3>
-        <p class="t"
-           data-so="Maalin kasta dhamaadkeeda: maxaa soo galay (caddaan iyo wallet), maxaa baxay, maxaase maqan."
-           data-en="At the end of each day: what came in (cash and wallet), what went out, and what is missing.">Maalin kasta dhamaadkeeda: maxaa soo galay (caddaan iyo wallet), maxaa baxay, maxaase maqan.</p>
-      </div>
-    </div>
+        </svg></div>
+        <div>
+          <h3 class="t" data-so="Xisaabta maalinlaha ah" data-en="The daily close">Xisaabta maalinlaha ah</h3>
+          <p class="t" data-so="Maalintii oo dhan: rasiidka #00418 iyo deynta Xaliimo labaduba halkan bay ku jiraan. Maxaa soo galay, maxaa baxay, maxaase maqan." data-en="The whole day: receipt #00418 and Xaliimo's deyn are both in here. What came in, what went out, and what is missing.">Maalintii oo dhan: rasiidka #00418 iyo deynta Xaliimo labaduba halkan bay ku jiraan. Maxaa soo galay, maxaa baxay, maxaase maqan.</p>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <section aria-labelledby="h-how">
@@ -608,7 +657,7 @@
 
   <section aria-labelledby="h-trust">
     <h2 id="h-trust" class="t rv" data-so="Xogtaadu waa taada" data-en="Your records are yours">Xogtaadu waa taada</h2>
-    <div class="promise rv">
+    <div class="promise waraaq rv">
       <svg class="kmark" viewBox="0 0 32 32" aria-hidden="true"><g fill="currentColor"><path d="M5 3.5 H10.5 V9.7 C8.4 11.8 6.4 14.2 5 16.6 Z"/><path d="M6 28.5 L6 21.2 C6 17.6 8.2 14.7 11.2 12.4 C13.7 10.1 16.2 7.6 18.6 5.2 C18 4.1 17.3 3.3 16.2 2.8 C19.4 2.1 22.6 1.5 25.8 1 L26.4 1.6 C26.1 4.8 25.7 8 25.2 11.2 C24.3 10 23.4 9.5 22.6 9.5 C20 11.5 17.3 13.6 14.7 15.6 L26.2 28.5 H20.4 L11.5 18.2 C11 21.5 10.7 24.9 10.7 28.5 Z"/></g></svg>
       <div>
         <p class="t promise-lead"
@@ -674,8 +723,8 @@
     <svg viewBox="0 0 32 32" aria-hidden="true"><g fill="currentColor"><path d="M5 3.5 H10.5 V9.7 C8.4 11.8 6.4 14.2 5 16.6 Z"/><path d="M6 28.5 L6 21.2 C6 17.6 8.2 14.7 11.2 12.4 C13.7 10.1 16.2 7.6 18.6 5.2 C18 4.1 17.3 3.3 16.2 2.8 C19.4 2.1 22.6 1.5 25.8 1 L26.4 1.6 C26.1 4.8 25.7 8 25.2 11.2 C24.3 10 23.4 9.5 22.6 9.5 C20 11.5 17.3 13.6 14.7 15.6 L26.2 28.5 H20.4 L11.5 18.2 C11 21.5 10.7 24.9 10.7 28.5 Z"/></g></svg>
     <h2 class="t" data-so="Diyaar ma u tahay inaad bilowdo?" data-en="Ready to start?">Diyaar ma u tahay inaad bilowdo?</h2>
     <p class="t"
-       data-so="Hal email — maalin shaqo gudaheed ayaan kuugu jawaabaynaa."
-       data-en="One email — we reply within a business day.">Hal email — maalin shaqo gudaheed ayaan kuugu jawaabaynaa.</p>
+       data-so="Maanta waa la xisaabtamay. Berri, Kobci ha kuu qoro. Hal email, maalin shaqo gudaheed jawaab."
+       data-en="Today is counted. Tomorrow, let Kobci do the writing. One email, a reply within a business day.">Maanta waa la xisaabtamay. Berri, Kobci ha kuu qoro. Hal email, maalin shaqo gudaheed jawaab.</p>
     <a class="cta t" href="mailto:info@kobci.so?subject=Kobci%20trial&amp;body=Magaca%20ganacsiga:%0A%0AInta%20goobood:%0A"
        data-so="Email noo soo dir — 30 maalmood bilaash" data-en="Email us — free for 30 days">Email noo soo dir — 30 maalmood bilaash</a>
     <p class="note band-note"><a href="mailto:info@kobci.so?subject=Kobci%20trial&amp;body=Magaca%20ganacsiga:%0A%0AInta%20goobood:%0A">info@kobci.so</a><button
@@ -732,8 +781,8 @@
     if (ctabar) ctabar.setAttribute('aria-label', lang === 'so' ? 'Tallaabo degdeg ah' : 'Quick actions');
     var art = document.querySelector('.artifacts');
     if (art) art.setAttribute('aria-label', lang === 'so'
-      ? 'Rasiidka Kobci iyo kaadhka deynta macaamiisha, af Soomaali'
-      : 'Kobci receipt and customer deyn card, in Somali');
+      ? 'Rasiidka Kobci iyo xisaab-xirka maanta, af Soomaali'
+      : 'Kobci receipt and today\'s daily close, in Somali');
     try { localStorage.setItem('kobci-lang', lang); } catch(e){}
   }
   // Crossfade the swap so switching language reads as one intentional change.
