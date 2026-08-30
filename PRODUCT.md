@@ -10,7 +10,7 @@ The public marketing/landing site for **Kobci**, a Somali-first business-managem
 Somali shopkeepers, wholesalers, and small producers; owners typically 35–55, phone-first (mid/low-end Android), often on slow connections, mixed literacy, Somali-primary with English toggle. Skeptical of software; deeply fluent in money, stock, and deyn (customer credit). Secondary audience: diaspora relatives who co-run or fund the business and often make the software call.
 
 ## The page's single job
-Get a business owner to send one email (info@kobci.so) to start a free 30-day trial. No self-serve signup exists; no WhatsApp number yet.
+Get a business owner to send one email (info (at) kobci.so) to start a free 30-day trial. No self-serve signup exists; no WhatsApp number yet.
 
 ## Voice
 Plain, concrete, market-floor Somali; no hype, no anglicised jargon. Money claims are conservative and honest (no fabricated numbers). The no-added-charges commitment is a first-class brand promise, not fine print — AND (owner ruling 2026-08-27) the words "interest/dulsaar/ribo" are TABOO and must never appear in copy; the promise is always framed positively ("the price is fixed", "nothing is ever added").
