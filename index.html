@@ -18,6 +18,7 @@
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://kobci.so/og.png">
 <link rel="preload" href="brand/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 <script>
+document.documentElement.classList.add('js');setTimeout(function(){var s=document.querySelector('.slip');if(s&&!window.kobciReady)s.classList.add('play');},6000);
 try { var preference = localStorage.getItem('kobci-theme'); if(preference==='light'||preference==='dark')document.documentElement.dataset.theme=preference; } catch(e){}
 </script>
 <script type="application/ld+json" id="faq-schema">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"so","mainEntity":[{"@type":"Question","name":"Ma jiraan kharashyo qarsoon?","acceptedAnswer":{"@type":"Answer","text":"Maya. Waxaad bixisaa qiimaha la sheegay oo keliya. Bixin dib u dhacday wax dheeraad ah laguguma daro — waligeed."}},{"@type":"Question","name":"Sideen u bilaabaa?","acceptedAnswer":{"@type":"Answer","text":"Tijaabadu weli ma furmin. Email noo soo dir magaca ganacsigaaga iyo inta goobood ee aad leedahay. Maalin shaqo gudaheed ayaan kuugu jawaabaynaa si aan uga wada hadalno ganacsigaaga iyo bilowga."}},{"@type":"Question","name":"Xogtayda yaa arki kara?","acceptedAnswer":{"@type":"Answer","text":"Adiga iyo dadka aad u ogolaato. Xogta ganacsigaaga waad soo dejisan kartaa."}},{"@type":"Question","name":"Maxaa dhacaya haddaan rabo inaan joojiyo?","acceptedAnswer":{"@type":"Answer","text":"Nala soo xiriir haddii aad rabto inaad joojiso. Xogta ganacsigaaga waad soo dejisan kartaa inta akoonkaagu shaqaynayo."}},{"@type":"Question","name":"Sideen u bixiyaa?","acceptedAnswer":{"@type":"Answer","text":"EVC Plus, eDahab, Zaad ama bangi. Kaadh lama rabo."}},{"@type":"Question","name":"Ma nidaam canshuur baa?","acceptedAnswer":{"@type":"Answer","text":"Maya. Kobci waa nidaam aad ganacsigaaga ku maamusho — ma aha nidaam canshuur."}}]}</script>
@@ -36,8 +37,8 @@ try { var preference = localStorage.getItem('kobci-theme'); if(preference==='lig
 .slip-rows{padding:6px 0 4px}.slip-rows li{display:grid;grid-template-columns:4.4em 1fr 18px;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--paper-rule);font-size:.9rem;line-height:1.45;animation:slip-row 420ms var(--ease) both}.slip-rows li:nth-child(1){animation-delay:330ms}.slip-rows li:nth-child(2){animation-delay:410ms}.slip-rows li:nth-child(3){animation-delay:490ms}.slip-rows li:nth-child(4){animation-delay:570ms}
 html[lang="en"] .slip-rows li{grid-template-columns:6.6em 1fr 18px}.slip-time{font-size:.78rem;font-weight:800;color:var(--paper-muted);letter-spacing:.04em;text-transform:uppercase}.slip-what{font-weight:650}
 .slip-tick{width:18px;height:18px;fill:none;stroke:#096555;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}.slip-tick path{stroke-dasharray:16;stroke-dashoffset:0;animation:tick-draw 260ms var(--ease) both}.slip-rows li:nth-child(1) path{animation-delay:640ms}.slip-rows li:nth-child(2) path{animation-delay:720ms}.slip-rows li:nth-child(3) path{animation-delay:800ms}.slip-rows li:nth-child(4) path{animation-delay:880ms}
-.slip-total{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:14px;padding-top:12px;position:relative;font-variant-numeric:tabular-nums}.slip-total:before,.slip-total:after{content:'';position:absolute;left:0;right:0;height:1.5px;background:var(--paper-ink);transform-origin:left;animation:rule-draw 360ms var(--ease) both 700ms}.slip-total:before{top:0}.slip-total:after{top:4px}.slip-total span{font-size:.82rem;font-weight:700;color:var(--paper-muted)}.slip-total strong{font-size:1.55rem;font-weight:800;letter-spacing:-.03em}.slip-total small{font-size:.8rem;font-weight:650;color:var(--paper-muted)}
-.slip-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;font-size:.84rem;font-weight:700;color:#096555}.slip-stamp{width:54px;height:54px;flex:none;color:#096555;padding:9px;border:2px solid currentColor;border-radius:50%;transform:rotate(-12deg);opacity:.9;animation:stamp-land 320ms var(--ease) both 1000ms}
+.slip-total{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:14px;padding-top:12px;position:relative;font-variant-numeric:tabular-nums}.slip-total:before,.slip-total:after{content:'';position:absolute;left:0;right:0;height:1.5px;background:var(--paper-ink);transform-origin:left;animation:rule-draw 360ms var(--ease) both 1120ms}.slip-total:before{top:0}.slip-total:after{top:4px}.slip-total span{font-size:.82rem;font-weight:700;color:var(--paper-muted)}.slip-total strong{font-size:1.55rem;font-weight:800;letter-spacing:-.03em}.slip-total small{font-size:.8rem;font-weight:650;color:var(--paper-muted)}
+.slip-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;font-size:.84rem;font-weight:700;color:#096555}.slip-stamp{width:54px;height:54px;flex:none;color:#096555;padding:9px;border:2px solid currentColor;border-radius:50%;transform:rotate(-12deg);opacity:.9;animation:stamp-land 320ms var(--ease) both 1480ms}
 :root[data-theme="dark"] .slip{--paper:#eef3ee;box-shadow:0 1px 1px rgba(0,0,0,.3),0 16px 32px -12px rgba(0,0,0,.6)}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .slip{--paper:#eef3ee;box-shadow:0 1px 1px rgba(0,0,0,.3),0 16px 32px -12px rgba(0,0,0,.6)}}
 @keyframes slip-print{from{clip-path:inset(0 0 100% 0);transform:rotate(-2deg) translateY(-22px)}to{clip-path:inset(0 0 -20px 0);transform:rotate(-2deg) translateY(0)}}@keyframes slip-row{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}@keyframes tick-draw{from{stroke-dashoffset:16}to{stroke-dashoffset:0}}@keyframes rule-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes stamp-land{from{opacity:0;transform:rotate(-24deg) scale(1.5)}to{opacity:.9;transform:rotate(-12deg) scale(1)}}
 .promise-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:23px 0}.promise-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:35px}.promise-inner p{display:flex;gap:13px;align-items:center;font-size:.83rem;font-weight:650;line-height:1.5}.promise-inner svg{width:23px;height:23px;flex:none;color:var(--accent);fill:none;stroke:currentColor;stroke-width:1.5}
@@ -67,7 +68,7 @@ html:not(.js) .no-js-control{display:none}
 .button{transition:background 160ms,color 160ms,transform 120ms var(--ease),box-shadow 160ms}.button:active{transform:translateY(1px) scale(.985);transition-duration:60ms}.button svg{transition:transform 180ms var(--ease)}.button:active svg,.button:hover svg{transform:translateX(3px)}
 .text-action:active,.main-nav a:active{opacity:.7}.icon-button:active,.language-control button:active,.billing button:active,.copy-button:active{transform:scale(.95)}.icon-button,.language-control button,.billing button,.copy-button{transition:background 180ms,color 180ms,transform 100ms}
 .billing small{font-size:.75rem}.payment{font-size:.85rem}.pricing-fine{font-size:.88rem}.annual-reference,.plan-description{font-size:.86rem}.footer p{font-size:.8rem}
-.swapping main,.swapping .site-header nav,.swapping .footer .wrap{opacity:0}main,.site-header nav,.footer .wrap{transition:opacity 140ms ease}
+.swapping main,.swapping .site-header nav,.swapping .footer .wrap{opacity:.35}main,.site-header nav,.footer .wrap{transition:opacity 140ms ease}
 .js .letter{display:grid;gap:12px;padding:18px 18px 16px;background:var(--bg);border-radius:10px;box-shadow:0 1px 0 var(--line),0 10px 24px -16px rgba(16,63,53,.45)}.letter-title{font-size:.8rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-bottom:10px;border-bottom:1.5px dashed var(--line)}
 .field{display:grid;grid-template-columns:10.5em 1fr;align-items:center;gap:12px}.field label{font-size:.88rem;font-weight:750}.field input,.field select{width:100%;min-width:0;min-height:46px;padding:9px 12px;border:1px solid var(--muted);border-radius:6px;background:var(--bg);color:var(--ink);font:inherit;font-size:.95rem}.field input:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .letter #selected-plan-note{font-size:.85rem;color:var(--muted);min-height:1.5em;position:relative;justify-self:start}
@@ -80,6 +81,16 @@ html:not(.js) .no-js-control{display:none}
 @media(max-width:800px){.js .sticky-cta{display:flex;position:fixed;left:16px;right:16px;bottom:max(14px,env(safe-area-inset-bottom));z-index:20;box-shadow:0 10px 26px -10px rgba(16,63,53,.55);transform:translateY(calc(100% + 30px));visibility:hidden;transition:transform 260ms var(--ease),visibility 0s 260ms}.js .sticky-cta.show{transform:none;visibility:visible;transition:transform 300ms var(--ease),visibility 0s}.footer{padding-bottom:96px}.plan .button{align-self:stretch}.field{grid-template-columns:1fr;gap:6px}}
 .settle>*{opacity:0;transform:translateY(14px)}.settle.in>*{opacity:1;transform:none;transition:opacity 420ms var(--ease),transform 560ms var(--ease)}.settle.in>*:nth-child(2){transition-delay:70ms}.settle.in>*:nth-child(3){transition-delay:140ms}.settle.in>*:nth-child(4){transition-delay:210ms}
 @media(prefers-reduced-motion:reduce){.settle>*{opacity:1;transform:none}.sticky-cta{transition:none}}
+/* Review fold r2 (2026-09-27). */
+.slip-total span,.slip-total strong{animation:slip-row 380ms var(--ease) both 1080ms}
+.js .slip:not(.play),.js .slip:not(.play) *,.js .slip:not(.play):before,.js .slip:not(.play):after,.js .slip:not(.play) *:before,.js .slip:not(.play) *:after{animation-play-state:paused}
+.letter-title{text-transform:none;letter-spacing:0;font-size:.9rem;color:var(--ink)}
+.field.need input{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}.field-hint{grid-column:1/-1;font-size:.84rem;color:var(--accent);font-weight:650;margin:0}.field-hint:empty{display:none}
+.contact-box.arrived{animation-name:arrive2}@keyframes arrive2{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 0%,transparent)}30%{box-shadow:0 0 0 8px color-mix(in srgb,var(--accent) 45%,transparent)}100%{box-shadow:0 0 0 18px color-mix(in srgb,var(--accent) 0%,transparent)}}
+:root[data-theme="dark"] .letter,:root[data-theme="dark"] .sticky-cta{box-shadow:0 1px 0 var(--line),0 12px 26px -14px rgba(0,0,0,.7)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .letter,:root:not([data-theme="light"]) .sticky-cta{box-shadow:0 1px 0 var(--line),0 12px 26px -14px rgba(0,0,0,.7)}}
+@media(max-width:800px){html{scroll-padding-bottom:96px}
+html:not(.js) .site-header{height:auto}html:not(.js) .header-inner{flex-wrap:wrap;padding:14px 0}html:not(.js) .main-nav{display:flex;position:static;flex-wrap:wrap;gap:4px 18px;border:0;padding:0;width:100%}}
 </style>
 </head>
 <body>
@@ -138,11 +149,11 @@ html:not(.js) .no-js-control{display:none}
 <div class="field"><label class="t" for="biz-name" data-so="Magaca ganacsiga" data-en="Business name">Magaca ganacsiga</label><input id="biz-name" type="text" autocomplete="organization" maxlength="80"></div>
 <div class="field"><label class="t" for="biz-places" data-so="Inta goobood" data-en="Number of locations">Inta goobood</label><input id="biz-places" type="text" inputmode="numeric" maxlength="12"></div>
 <div class="field"><label class="t" for="contact-plan" data-so="Qorshaha" data-en="Plan">Qorshaha</label><select id="contact-plan" aria-describedby="selected-plan-note"><option class="t" value="" data-so="Iga caawi doorashada" data-en="Help me choose">Iga caawi doorashada</option><option value="Bilow">Bilow</option><option value="Dhexe">Dhexe</option><option value="Maamul">Maamul</option></select></div>
-<p id="selected-plan-note" role="status" aria-live="polite"></p></div>
+<p id="selected-plan-note" role="status" aria-live="polite"></p><p class="field-hint" id="field-hint" aria-live="polite"></p></div>
 <a class="button button-primary mail-action no-js-control" id="email-draft" href="#xiriir" aria-describedby="email-help"><span class="t" data-so="Fur emailka codsiga" data-en="Open email draft">Fur emailka codsiga</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
 <button class="button button-quiet no-js-control" type="button" id="copy-message"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M4 13H3V3h10v1"/></svg><span class="t" data-so="Koobi fariinta oo dhan" data-en="Copy the whole message">Koobi fariinta oo dhan</span></button>
 <p class="mail-status" id="mail-status" role="status" aria-live="polite"></p>
-<p class="contact-help t no-js-control" id="email-help" data-so="Wuxuu furayaa emailkaaga. Ku dar magaca ganacsiga iyo inta goobood, dabadeed dir. Maalin shaqo gudaheed ayaan kuugu jawaabaynaa." data-en="Opens your email app. Add your business name and number of locations, then send. We reply within one business day.">Wuxuu furayaa emailkaaga. Ku dar magaca ganacsiga iyo inta goobood, dabadeed dir. Maalin shaqo gudaheed ayaan kuugu jawaabaynaa.</p>
+<p class="contact-help t no-js-control" id="email-help" data-so="Maalin shaqo gudaheed ayaan kuugu jawaabaynaa." data-en="We reply within one business day.">Maalin shaqo gudaheed ayaan kuugu jawaabaynaa.</p>
 <div class="email-row no-js-control"><a class="email-address mail-action" href="#xiriir"><span data-email>info [at] kobci [dot] so</span></a><button class="copy-button" type="button" id="copy-email"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M4 13H3V3h10v1"/></svg><span class="t" data-so="Koobi emailka" data-en="Copy email">Koobi emailka</span></button></div><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p><noscript><p class="no-js-note">Email: info [at] kobci [dot] so. Noo soo qor magaca ganacsigaaga iyo inta goobood.</p></noscript></div></div></section>
 </main>
 <a class="button button-primary sticky-cta contact-link" id="sticky-cta" href="#xiriir" tabindex="-1" aria-hidden="true"><span class="t" data-so="Codso tijaabo" data-en="Request a pilot">Codso tijaabo</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
@@ -151,7 +162,6 @@ html:not(.js) .no-js-control{display:none}
 (function(){
  'use strict';
  var doc=document.documentElement;
- doc.classList.add('js');
  var lang='so',period='monthly';
  var email=['info',['kobci','so'].join('.')].join(String.fromCharCode(64));
  var translations=document.querySelectorAll('.t');
@@ -203,7 +213,7 @@ html:not(.js) .no-js-control{display:none}
  });});
  var mailStatus=document.getElementById('mail-status'),copyMessage=document.getElementById('copy-message');
  function replay(el,cls){el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls);}
- function showStatus(text){mailStatus.textContent=text;replay(mailStatus,'show');}
+ function showStatus(text){mailStatus.textContent=text;replay(mailStatus,'show');var r=mailStatus.getBoundingClientRect();if(r.bottom>window.innerHeight-12||r.top<0)mailStatus.scrollIntoView({block:'center',behavior:reduceMotion.matches?'auto':'smooth'});}
  document.querySelectorAll('[data-period]').forEach(function(b){b.addEventListener('click',function(){period=b.dataset.period;renderPrices(true);refreshMail();});});
  function isDark(){return doc.dataset.theme?doc.dataset.theme==='dark':darkQuery.matches;}
  function syncTheme(){themeButton.setAttribute('aria-pressed',String(isDark()));themeButton.setAttribute('aria-label',lang==='so'?'Muuqaal madow':'Dark appearance');}
@@ -230,7 +240,18 @@ html:not(.js) .no-js-control{display:none}
   setTimeout(go,900);
  }
  document.querySelectorAll('.contact-link').forEach(function(a){a.addEventListener('click',function(){if(a.dataset.plan)planSelect.value=a.dataset.plan;refreshMail();document.getElementById('xiriir').focus({preventScroll:true});arrive(!!a.dataset.plan);});});
- document.getElementById('email-draft').addEventListener('click',function(){
+ var fieldHint=document.getElementById('field-hint'),nudged=false;
+ function clearNeed(){document.querySelectorAll('.field.need').forEach(function(f){f.classList.remove('need');});fieldHint.textContent='';}
+ bizName.addEventListener('input',clearNeed);bizPlaces.addEventListener('input',clearNeed);
+ document.getElementById('email-draft').addEventListener('click',function(e){
+  var empty=[bizName,bizPlaces].filter(function(i){return !i.value.trim();});
+  if(empty.length&&!nudged){
+   e.preventDefault();nudged=true;
+   empty.forEach(function(i){i.parentNode.classList.add('need');});
+   fieldHint.textContent=lang==='so'?'Ku qor magaca ganacsiga iyo inta goobood si aan si dhakhso ah kuugu jawaabno. Mar kale riix si aad hadda u dirto.':'Add your business name and number of locations so we can reply faster. Tap again to send now.';
+   empty[0].focus();return;
+  }
+  clearNeed();
   var left=false;function away(){left=true;}
   window.addEventListener('blur',away,{once:true});document.addEventListener('visibilitychange',away,{once:true});
   setTimeout(function(){
@@ -250,6 +271,8 @@ html:not(.js) .no-js-control{display:none}
   }
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(message).then(done).catch(fallback);else fallback();
  });
+ window.kobciReady=true;var slip=document.querySelector('.slip');
+ if(!reduceMotion.matches&&'IntersectionObserver' in window){var slipIo=new IntersectionObserver(function(es){if(es[0].isIntersecting){slip.classList.add('play');slipIo.disconnect();}},{threshold:.6});slipIo.observe(slip.parentNode);}else slip.classList.add('play');
  var sticky=document.getElementById('sticky-cta');
  if('IntersectionObserver' in window){
   var heroOut=false,contactIn=false;
