@@ -2,7 +2,7 @@
 
 <!-- impeccable:product-schema 1 -->
 
-This file covers kobci.so, the public marketing site for **Kobci**. The product itself (AQUA, served to pilot shops at pilot.kobci.so) lives in a separate repository. Updated 2026-09-27 from the earlier record plus owner rulings recorded in the orchestrator; nothing below is inferred without a source.
+This file covers kobci.so, the public marketing site for **Kobci**. The product itself lives in a separate repository. Updated 2026-09-27 from the earlier record plus owner rulings recorded in the orchestrator; nothing below is inferred without a source.
 
 ## Platform
 
@@ -10,7 +10,7 @@ web
 
 ## Stack
 
-Static single-file HTML per page, inline CSS and JS, no build step, hosted on GitHub Pages at kobci.so. One self-hosted webfont (Manrope) with system fallback. Owner ruling 2026-08-30: the landing stack is free to choose; MUI is only for the app.
+Static single-file HTML per page, inline CSS and JS, no build step, hosted on GitHub Pages at kobci.so. One self-hosted webfont (Manrope) with system fallback. Owner ruling 2026-08-30: the landing stack is free to choose, independent of the product's.
 
 ## Users
 
