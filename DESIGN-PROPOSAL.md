@@ -4,7 +4,7 @@ Branch `claude/kobci-proposal-20260930`, based on origin/main 285c874. Two pages
 
 ## Motion thesis
 
-This builds on LANDING-MOTION-STUDY.md. Each page has **one object**, and the visitor examines it **on tap**. On the landing that object is the shop's-day slip. On the pilot page it is the pilot sheet. Everything else is feedback on the visitor's own action, or a one-time ledger gesture: a rule being drawn, a row settling, a stamp landing. Nothing loops or auto-advances, and nothing is tied to scroll position. Prices change instantly and never animate. All motion uses transform and opacity, on the one existing ease `cubic-bezier(.22,.9,.28,1)`.
+This builds on LANDING-MOTION-STUDY.md. Each page has **one object**, and the visitor examines it **on tap**. On the landing that object is the shop's-day slip. On the pilot page it is the pilot sheet. Everything else is feedback on the visitor's own action, or a one-time ledger gesture: a rule being drawn, a row settling, a stamp landing. Nothing loops or auto-advances, and nothing is tied to scroll position. Prices change instantly and never animate. Everything else uses transform and opacity; the only exceptions are one-off colour and shadow fades on single controls. Every duration, delay and curve is a CSS custom property on `:root`; see the timing tokens below.
 
 **Reduced motion, globally:** the existing kill rule (`animation:none; transition:none`) covers every new effect, and every animation runs from an offset to the element's natural resting state. With motion reduced, each state still changes, just instantly: the selected row, the chosen plan, the billing period, the open step and the copied tick. No information is carried only by motion. Every state is also shown as text, colour or border, and exposed through `aria-pressed`, `aria-expanded`, `aria-current` or a live region.
 
@@ -63,6 +63,54 @@ The page takes every term from PILOT-AGREEMENT-DRAFT v0.3 and PROMISE-GAP-AUDIT-
 ## Somali review
 
 Every Somali string written for this proposal carries `data-review="so"` in the markup, for the Gemini Somali review seat. There are 9 occurrences on the landing (6 unique strings) and 73 on the pilot page. The pilot script also has 3 runtime strings (the days-left sentence, "Waxaan rabaa inaan ku bilaabo:", and the page title). The head meta and og descriptions on both pages are also new. The reviewer should confirm these first: the month abbreviations (Okt/Nof/Dis), "31 Diseembar 2026", the term for a two-factor code ("koodh labaad … app xaqiijin"), "dammaanad waqtiga shaqada" (uptime guarantee), and "heshiis" (arrangement). No new product vocabulary was coined where the page already had a term; the chips reuse the plan-card terms.
+
+## Revision r2 (owner feedback: "check the button animations; overall too fast")
+
+### Timing tokens
+
+All motion on both pages reads these tokens; no transition or animation declaration contains a literal duration any more. Reduced motion is still instant, through the global `animation:none; transition:none` rule.
+
+| Token | Value | Where it is used |
+|---|---|---|
+| `--dur-press` | 100ms | Only the press-down half of a press: `.button:active`, the sticky CTA, icon/language/billing/copy buttons, chips, `.text-action`/nav link press opacity. Release uses `--dur-fast`. |
+| `--dur-fast` | 200ms | Micro-feedback: button and control background and colour, hover arrow release, press release, chip border/fill, theme icon opacity, copy glyph fade, note fade-out, plan-stamp fade-out, step-title colour, language dip. |
+| `--dur-base` | 360ms | State changes: slip/sheet ruler, note fade-in, tick redraw, billing thumb and its label colour, plan frame and stamp fade-in, nav underline, theme icon rotation, copy tick draw, FAQ "+" rotation, path rail fill, sticky CTA show/hide, letter-line settle, mail status. |
+| `--dur-slow` | 700ms | Entrances and reveals: slip/sheet print, slip rows, total text, stamp landing (slip and chosen plan), list settles, FAQ answer and path step reveal, plan-note underline, copy-button nudge. |
+| `--dur-draw` | 1000ms | Lines drawn once: slip double rule, pilot calendar bar, benefits ledger rule, pilot ledger gutter, contact-box arrival pulse. |
+| `--stagger` | 80ms | Row, tick and list staggers; note fade-in delay; copy tick delay; ledger gutter delay. |
+| `--seq-print` / `--seq-rows` / `--seq-ticks` / `--seq-total` / `--seq-stamp` | 100 / 500 / 1000 / 1500 / 2300 ms | Start points of the one-time slip (and pilot sheet) entrance. The whole sequence now ends at about 3.0 s; it was 1.8 s. |
+| `--ease-out` (= `--ease`) | `cubic-bezier(.2,.7,.2,1)` | Arrivals, feedback, reveals. |
+| `--ease-in-out` | `cubic-bezier(.45,0,.25,1)` | Movement between two resting states: ruler, billing thumb, rail fill, sticky hide, drawn lines, language dip, tick undraw. |
+
+Two load guards were added:
+
+- `html.preload` is set in `<head>` and removed two frames after the script initialises. It blocks all transitions while the page sets its first state (theme icon, billing thumb, chosen plan, language), so nothing animates on load.
+- The FAQ entry that is open by default and the pilot's first path step no longer play their reveal on load.
+
+### Buttons and controls: before -> after
+
+Captured frame by frame with Playwright. Each control has a screenshot every 50 ms plus a per-rAF computed-style log, saved to `proposal-shots/frames-before/` and `frames-after/`; each folder also holds `samples-*.json` and `trace-desktop.zip`/`trace-mobile.zip`. `before` is commit 18c6427, and `after` is this revision.
+
+| Control | Before | After |
+|---|---|---|
+| Primary buttons (hero, contact, sticky) hover | Lifted 2px in 160ms. It also applied on touch, so a tapped button stayed lifted. | Lifts 1px in 200ms, and only on devices that can hover. |
+| Primary/quiet buttons press | From the hover lift (-2px) to +1px and scale .985 in 60ms, a 3px jolt. The 60ms also applied to background and colour. On release everything snapped back in 120ms. | +1px and scale .98. Transform goes down in 100ms, and background and colour keep 200ms. Release eases back in 200ms. No bounce. |
+| Button arrow | Nudged 3px on hover *and* while pressed. On touch it stayed nudged after a tap (measured: translateX 3px left on a tapped "Dooro"). | Nudges only on hover-capable devices, eases 360ms in and out. |
+| "Dooro" quiet buttons | Hover wash stuck on touch after a tap (measured rgb(240,247,243) after tap). | Hover gated; a tap leaves the button at rest. |
+| Chosen-plan frame and stamp | The 2px frame appeared instantly while the stamp animated for 340ms, so the two moved out of step. The stamp fell from scale 1.45. On un-choose the stamp snapped away in 160ms and the frame vanished instantly. | The frame fades in 360ms. The stamp lands from a gentler rotate(-20deg) scale(1.2) over 700ms, and leaves in 200/360ms. |
+| Monthly/Yearly thumb | Thumb moved in 280ms but the label colour changed in 200ms, so for a moment the white label sat on the pale track. | Thumb and label colour share 360ms `--ease-in-out`; press 100ms down, 200ms up. |
+| Theme toggle | Icon cross-rotate 360ms with a 200ms fade. The hover background stuck on touch (measured). | Same morph, on tokens. Hover gated; the preload guard stops a dark-mode visitor seeing it animate on load. |
+| Copy tick (both copy buttons) | Tick drew in 300ms. When the "done" state cleared after 2.4s, the tick snapped away in one frame. | Tick draws in 360ms after an 80ms stagger. The revert undraws in 200ms while the copy glyph fades back in. |
+| FAQ toggles | "+" rotated in 160ms. The answer settled in 300ms, including the default-open answer on page load. | "+" rotates in 360ms. The answer settles in 700ms and does not play on load. |
+| Icon, language, billing and copy buttons press | Scaled to .95 in 100ms and came back in 100ms (abrupt). | Down in 100ms, back in 200ms. |
+| Text links and nav links press | Dropped to .7 opacity with no transition (a flicker). | Fade to .7 in 100ms and back in 200ms. Hover colour is gated. |
+| Slip rows / pilot sheet lines | Ruler 320ms. The note cross-faded 200/220ms. Hover underline stuck on touch. | Ruler 360ms ease-in-out, note out 200ms and in 360ms after 80ms, tick redraw 360ms. Hover gated. |
+| Pilot step buttons | Title colour snapped while the numeral faded (200ms). Rail fill 460ms. Detail reveal 320ms, also on load for step 1. Hover colour stuck on touch. | Title and numeral fade together (200ms), rail fills in 360ms ease-in-out, detail reveals in 700ms (not on load). Hover gated. |
+| Pilot chips | Press scale .97 held, then snapped back in 100ms. Tick undrew in 120ms. Hover wash stuck on touch. | Press down in 100ms and release in 200ms. The tick draws in 360ms and undraws in 200ms. Hover gated. |
+| Mobile sticky button | Show 300ms / hide 260ms. No press feedback, because its own transform overrode `:active`. | Show and hide at 360ms (hide uses ease-in-out), plus a proper press (+1px, scale .98, 100ms down). |
+| Arrival pulse (contact box) | 900ms. | 1000ms (`--dur-draw`). It still fires once per click, guarded by scrollend or a 900ms timeout. |
+| Language toggle | 140ms dip. A second tap during the dip queued a second swap (double-fire). | 200ms dip; taps are ignored while a swap is pending. |
+| Nav location underline | 280ms. | 360ms. |
 
 ## Verification
 
