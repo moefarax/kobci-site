@@ -22,7 +22,7 @@ Static single-file HTML per page, inline CSS and JS, no build step, hosted on Gi
 
 Kobci is a Somali-first business-management platform for small businesses: sales and receipts (POS), stock, customer credit (deyn), invoices and expenses, customers, staff attendance, leave and payroll, and business reports.
 
-The site has one job: get a business owner to send one email asking to start. Success is a sent email with the business name and number of locations. There is no self-serve signup. Pilot access is not open yet, so the email starts a conversation, and the 30 free days begin once an account is activated.
+The site has one job: get a business owner to send one email asking to start. Success is a sent email with the business name and number of locations. There is no self-serve signup. Pilot access is not open yet, so the email starts a conversation. Pilot shops are free until 2026-12-31 (pilot agreement v0.3); this replaced the earlier "30 free days once activated" copy on 2026-09-30. `pilot.html` explains the pilot terms.
 
 ## Positioning
 
@@ -45,7 +45,7 @@ The site has one job: get a business owner to send one email asking to start. Su
 - **Plan contents** as currently published:
   - Bilow: sales and inventory, customer credit, invoices and expenses, low-stock alerts.
   - Dhexe adds customer management, sales tracking and business reports.
-  - Maamul adds staff attendance, leave and payroll.
+  - Maamul adds staff attendance and leave. Payroll is not advertised until at least two pilot shops complete a payroll cycle (owner launch condition).
 - Every feature claim must map to a shipped capability. The 2026-08-27 audit removed a false "expiry tracking" claim.
 - Trial copy must never promise self-serve or instant access.
 - **Bilingual:** every visible string exists in Somali and English (the data-so/data-en toggle system).
