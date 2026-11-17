@@ -159,13 +159,7 @@ html:not(.js) .site-header{height:auto}html:not(.js) .header-inner{flex-wrap:wra
 @media(max-width:420px){.pilot .hero h1{font-size:2.25rem}.path-head{gap:14px;font-size:1rem}.path-body{padding-left:58px}.sheet-row,html[lang="en"] .sheet-row{grid-template-columns:5.6em 1fr 18px}}
 @media(prefers-reduced-motion:reduce){.path:after{transition:none}}
 
-/* Audit fixes: one billing indicator, reserved feedback, opaque mobile action tray. */
-.billing:before{content:none}.billing button{transition:transform var(--dur-press) var(--ease-out)}
-.js .mail-status{display:block;min-height:8em}.js .mail-status:empty{visibility:hidden}
-@media(max-height:500px) and (min-width:801px){.rd-hero .hero,.pilot .rd-hero .hero{align-items:start;padding-top:32px}}
-@media(max-width:800px){.js body{padding-bottom:90px}.js .sticky-cta:before{content:'';position:absolute;inset:-12px -16px -30px;background:var(--bg);border-top:1px solid var(--line);z-index:-1}html:not(.js) .site-header{height:auto;position:relative}html:not(.js) .header-inner{padding-block:12px}html:not(.js) .main-nav{gap:0 16px}}
-html:not(.js) .slip-row,html:not(.js) .path-head{pointer-events:none;cursor:default}
-html:not(.js) .slip-hint{display:none}
+
 </style>
 <style id="redesign">
 /* Kobci: the shop ledger. Paper in daylight, ink green after closing. */
@@ -213,6 +207,11 @@ h1,h2,h3{letter-spacing:-.035em}h2{font-size:clamp(2rem,3.6vw,3.25rem);font-weig
 @media(max-width:800px){.js body{padding-bottom:90px}.js .sticky-cta:before{content:'';position:absolute;inset:-12px -16px -30px;background:var(--bg);border-top:1px solid var(--line);z-index:-1}html:not(.js) .site-header{height:auto;position:relative}html:not(.js) .header-inner{padding-block:12px}html:not(.js) .main-nav{gap:0 16px}}
 html:not(.js) .slip-row,html:not(.js) .path-head{pointer-events:none;cursor:default}
 html:not(.js) .slip-hint{display:none}
+
+/* Phone reading and request flow, using the existing bilingual guidance. */
+.button,.text-action,.main-nav a,.icon-button,.language-control button,.copy-button,.path-head,.path-num,.chip{transition-property:transform,box-shadow}
+@media(max-width:800px){.slip-head span,.slip-time,.slip-foot,.slip-total>span,.slip-total small,.rd-stamp,.months-labels,.months-today,.days-left{font-size:.9rem}.rd-marq p{font-size:.9rem}.js .pilot .contact-box{display:flex;flex-direction:column;align-items:stretch;gap:18px}.js .pilot .contact-intro{display:contents}.js .pilot .contact-actions{order:1}.js .pilot .letter-preview{order:2}}
+.language-control{border-radius:0}
 </style>
 </head>
 <body class="pilot">
@@ -268,7 +267,7 @@ html:not(.js) .slip-hint{display:none}
 <div class="faq-list"><details open><summary><span class="t" data-so="Tijaabadu ma bilaash baa?" data-en="Is the pilot free?">Tijaabadu ma bilaash baa?</span></summary><p class="t" data-so="Haa. Lacag lagama qaado ilaa 31 Diseembar 2026. Kaadh lama rabo." data-en="Yes. There is no charge until 31 December 2026. No card required.">Haa. Lacag lagama qaado ilaa 31 Diseembar 2026. Kaadh lama rabo.</p></details><details><summary><span class="t" data-so="Maxaa dhacaya 31 Diseembar kadib?" data-en="What happens after 31 December?">Maxaa dhacaya 31 Diseembar kadib?</span></summary><p class="t" data-so="Haddii uu ku anfaco, dooro qorshaha kugu habboon: Bilow $9, Dhexe $14 ama Maamul $24 bishii, ama $90, $140 ama $240 sannadkii. Waxba si toos ah lagaaguma qaado." data-en="If it works for you, choose the plan that fits: Bilow $9, Dhexe $14 or Maamul $24 a month, or $90, $140 or $240 a year. Nothing is charged automatically.">Haddii uu ku anfaco, dooro qorshaha kugu habboon: Bilow $9, Dhexe $14 ama Maamul $24 bishii, ama $90, $140 ama $240 sannadkii. Waxba si toos ah lagaaguma qaado.</p></details><details><summary><span class="t" data-so="Ma joojin karaa inta tijaabadu socoto?" data-en="Can I stop during the pilot?">Ma joojin karaa inta tijaabadu socoto?</span></summary><p class="t" data-so="Haa. Labadeenaba waan joojin karnaa, 14 maalmood ka hor ogeysiis qoraal ah. Xogta ganacsigaaga waad soo dejisan kartaa." data-en="Yes. Either side can end it with 14 days’ written notice. You can export your business data.">Haa. Labadeenaba waan joojin karnaa, 14 maalmood ka hor ogeysiis qoraal ah. Xogta ganacsigaaga waad soo dejisan kartaa.</p></details><details><summary><span class="t" data-so="Maxaan u baahanahay si aan u bilaabo?" data-en="What do I need to start?">Maxaan u baahanahay si aan u bilaabo?</span></summary><p class="t" data-so="Telefoon ama kombiyuutar iyo internet. Kaadh lama rabo." data-en="A phone or computer with internet. No card required.">Telefoon ama kombiyuutar iyo internet. Kaadh lama rabo.</p></details></div></section>
 <section class="section contact-section wrap" id="codso" tabindex="-1" aria-labelledby="contact-title"><div class="contact-box">
 <div class="contact-intro"><h2 id="contact-title"><span class="t" data-so="Codsigaaga," data-en="Your request,">Codsigaaga,</span> <span class="accent"><span class="t" data-so="hal email." data-en="in one email.">hal email.</span></span></h2>
-<p class="t" data-so="Buuxi meelaha hoose. Emailka waan kuu diyaarinaynaa — adigu dir." data-en="Fill in the lines below. We prepare the email — you send it.">Buuxi meelaha hoose. Emailka waan kuu diyaarinaynaa — adigu dir.</p>
+<p class="t no-js-control" data-so="Buuxi meelaha hoose. Emailka waan kuu diyaarinaynaa — adigu dir." data-en="Fill in the lines below. We prepare the email — you send it.">Buuxi meelaha hoose. Emailka waan kuu diyaarinaynaa — adigu dir.</p>
 <p class="t contact-help" id="email-help" data-so="Maalin shaqo gudaheed ayaan kuugu jawaabaynaa." data-en="We reply within one business day.">Maalin shaqo gudaheed ayaan kuugu jawaabaynaa.</p>
 <div class="letter-preview no-js-control" aria-hidden="true"><p class="lp-to"><span class="t" data-so="Ku:" data-en="To:">Ku:</span> <span data-email>info [at] kobci [dot] so</span></p><p class="lp-subject" id="lp-subject"></p><p class="lp-line" id="lp-name"></p><p class="lp-line" id="lp-places"></p><p class="lp-line" id="lp-start"></p></div>
 </div>
@@ -378,13 +377,13 @@ html:not(.js) .slip-hint{display:none}
  function arrive(){var done=false;function go(){if(done)return;done=true;replay(contactBox,'arrived');}if('onscrollend' in window)window.addEventListener('scrollend',go,{once:true});setTimeout(go,2500);}
  document.querySelectorAll('.contact-link').forEach(function(a){a.addEventListener('click',function(){document.getElementById('codso').focus({preventScroll:true});arrive();});});
  var fieldHint=document.getElementById('field-hint'),nudged=false;
- function clearNeed(){document.querySelectorAll('.field.need').forEach(function(f){f.classList.remove('need');});writeMessage(fieldHint,'','');}
+ function clearNeed(){document.querySelectorAll('.field.need').forEach(function(f){f.classList.remove('need');f.querySelector('input').removeAttribute('aria-invalid');f.querySelector('input').removeAttribute('aria-describedby');});writeMessage(fieldHint,'','');}
  bizName.addEventListener('input',clearNeed);bizPlaces.addEventListener('input',clearNeed);
  document.getElementById('email-draft').addEventListener('click',function(e){
   var empty=[bizName,bizPlaces].filter(function(i){return !i.value.trim();});
-  if(empty.length&&!nudged){e.preventDefault();nudged=true;empty.forEach(function(i){i.parentNode.classList.add('need');});
+  if(empty.length&&!nudged){e.preventDefault();nudged=true;empty.forEach(function(i){i.parentNode.classList.add('need');i.setAttribute('aria-invalid','true');i.setAttribute('aria-describedby','field-hint');});
    writeMessage(fieldHint,'Ku qor magaca ganacsiga iyo inta goobood si aan si dhakhso ah kuugu jawaabno. Mar kale riix si aad hadda u dirto.','Add your business name and number of locations so we can reply faster. Tap again to send now.');
-   empty[0].focus({preventScroll:true});empty[0].parentNode.scrollIntoView({block:'center',behavior:'instant'});return;}
+   empty[0].parentNode.before(fieldHint);empty[0].focus({preventScroll:true});empty[0].parentNode.scrollIntoView({block:'center',behavior:'instant'});return;}
   clearNeed();var left=false;function away(){left=true;}
   window.addEventListener('blur',away,{once:true});document.addEventListener('visibilitychange',away,{once:true});
   setTimeout(function(){window.removeEventListener('blur',away);document.removeEventListener('visibilitychange',away);
