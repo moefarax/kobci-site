@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-labelledby="title">
-  <title id="title">Kobci K-arrow mark</title>
-  <path fill="currentColor" d="M4 4H10V13.5L20.5 6L18.5 4H28L25.5 13.5L23.3 10.4L15.3 16.1L28 28H19.5L10 19.2V28H4Z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Kobci"><rect width="48" height="48" rx="13" fill="#9be3c0"/><path d="M16 13V35M17 25L31.5 13M24 13H31.5V20.5M20.6 22L31.5 35" fill="none" stroke="#0b3a2e" stroke-width="6.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
